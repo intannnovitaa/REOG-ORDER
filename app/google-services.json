@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "811990163682",
+    "firebase_url": "https://reog-order-default-rtdb.firebaseio.com",
+    "project_id": "reog-order",
+    "storage_bucket": "reog-order.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811990163682:android:a9e0e9b71437a5a635bebb",
+        "android_client_info": {
+          "package_name": "com.example.reogorder"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "811990163682-sranr8jn9t14egj2f7dtjisulojlisra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJYK78FCKTRUDVwU18E2QEtzfa22fkM64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "811990163682-sranr8jn9t14egj2f7dtjisulojlisra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:811990163682:android:d20db8206ebd4f6e35bebb",
+        "android_client_info": {
+          "package_name": "mhb.rds.project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "811990163682-sranr8jn9t14egj2f7dtjisulojlisra.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJYK78FCKTRUDVwU18E2QEtzfa22fkM64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "811990163682-sranr8jn9t14egj2f7dtjisulojlisra.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,13 +5,12 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.example.model.user
+import com.example.model.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -40,17 +39,16 @@ class ActivityLogin : AppCompatActivity() {
         btnLogin.setOnClickListener {
             Log.d("Email", textEmail.text.toString())
             FirebaseDatabase.getInstance().getReference("user").orderByChild("email").equalTo(textEmail.text.toString()).addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onCancelled(p0: DatabaseError) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
+                override fun onCancelled(p0: DatabaseError) {}
                 override fun onDataChange(p0: DataSnapshot) {
                     if (p0.exists()){
                         for (h in p0.children){
-                            val us = h.getValue(user::class.java)
-                            if(us!!.password.equals(textPassword.text.toString())){
+                            val us = h.getValue(User::class.java)
+                            if(us!!.password == textPassword.text.toString()){
                                 val editor = SP.edit()
                                 editor.putString("role", "user")
-                                editor.putInt("id", us!!.id)
+                                editor.putInt("id", us.id)
+                                editor.putString("nama", us.nama)
                                 editor.putString("email", us.email)
                                 editor.putString("password", us.password)
                                 editor.putString("nohp", us.nohp)
