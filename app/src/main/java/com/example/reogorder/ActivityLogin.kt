@@ -40,9 +40,7 @@ class ActivityLogin : AppCompatActivity() {
         btnLogin.setOnClickListener {
             Log.d("Email", textEmail.text.toString())
             FirebaseDatabase.getInstance().getReference("user").orderByChild("email").equalTo(textEmail.text.toString()).addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onCancelled(p0: DatabaseError) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
+                override fun onCancelled(p0: DatabaseError) {}
                 override fun onDataChange(p0: DataSnapshot) {
                     if (p0.exists()){
                         for (h in p0.children){
@@ -50,8 +48,7 @@ class ActivityLogin : AppCompatActivity() {
                             if(us!!.password.equals(textPassword.text.toString())){
                                 val editor = SP.edit()
                                 editor.putString("role", "user")
-                                editor.putString("status", "login")
-                                editor.putInt("id", us.id)
+                                editor.putInt("id", us!!.id)
                                 editor.putString("email", us.email)
                                 editor.putString("password", us.password)
                                 editor.putString("nohp", us.nohp)
