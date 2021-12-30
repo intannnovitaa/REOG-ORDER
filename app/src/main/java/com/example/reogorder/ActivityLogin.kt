@@ -50,7 +50,8 @@ class ActivityLogin : AppCompatActivity() {
                             if(us!!.password.equals(textPassword.text.toString())){
                                 val editor = SP.edit()
                                 editor.putString("role", "user")
-                                editor.putInt("id", us!!.id)
+                                editor.putString("status", "login")
+                                editor.putInt("id", us.id)
                                 editor.putString("email", us.email)
                                 editor.putString("password", us.password)
                                 editor.putString("nohp", us.nohp)
