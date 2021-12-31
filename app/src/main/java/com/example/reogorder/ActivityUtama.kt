@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.reogorder.fragment.FragmentAkun
+import com.example.reogorder.fragment.FragmentBeranda
+import com.example.reogorder.fragment.FragmentPesanan
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ActivityUtama : AppCompatActivity() {

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
-    tools:context=".FragmentAkun">
+    tools:context=".fragment.FragmentAkun">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarAkun"

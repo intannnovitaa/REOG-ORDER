@@ -19,6 +19,7 @@
         android:layout_marginVertical="20dp"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/sanggarItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -29,6 +30,7 @@
             android:textStyle="bold"/>
 
         <TextView
+            android:id="@+id/alamatItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -37,6 +39,7 @@
             android:textSize="16dp"/>
 
         <TextView
+            android:id="@+id/nohpItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -47,4 +50,9 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/titleItem" />
 </RelativeLayout>
