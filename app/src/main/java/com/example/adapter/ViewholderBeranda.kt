@@ -18,14 +18,14 @@ class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    fun setDetails(ctx: Context, nama:String, alamat:String, nohp:String) {
-        val namaSanggar = mView.findViewById(R.id.nama) as TextView
-        val alamatSanggar = mView.findViewById(R.id.alamat) as TextView
-        val nohpSanggar = mView.findViewById(R.id.nohp) as TextView
+    fun setDetails(ctx: Context, nama_sanggar:String, alamat_sanggar:String, nohp_sanggar:String) {
+        val namaSanggar = mView.findViewById(R.id.namaSanggar) as TextView
+        val alamatSanggar = mView.findViewById(R.id.alamatSanggar) as TextView
+        val nohpSanggar = mView.findViewById(R.id.nohpSanggar) as TextView
 
-        namaSanggar.text = nama
-        alamatSanggar.text = alamat
-        nohpSanggar.text = nohp
+        namaSanggar.text = nama_sanggar
+        alamatSanggar.text = alamat_sanggar
+        nohpSanggar.text = nohp_sanggar
     }
 
     interface ClickListener {

@@ -42,13 +42,13 @@ class FragmentBeranda : Fragment() {
             query
         ) {
             override fun populateViewHolder(viewHolder:ViewholderBeranda, model:Sanggar, position:Int) {
-                viewHolder.setDetails(activity!!.applicationContext, model.nama, model.alamat, model.nohp)
+                viewHolder.setDetails(activity!!.applicationContext, model.nama_sanggar, model.alamat_sanggar, model.nohp_sanggar)
             }
             override fun onCreateViewHolder(parent:ViewGroup, viewType:Int):ViewholderBeranda {
                 val viewHolder = super.onCreateViewHolder(parent, viewType)
                 viewHolder.setOnClickListener(object: ViewholderBeranda.ClickListener {
                     override fun onItemClick(view:View, position:Int) {
-                        val namaSanggar = view.findViewById(R.id.nama) as TextView
+                        val namaSanggar = view.findViewById(R.id.namaSanggar) as TextView
                         val namaS = namaSanggar.text.toString()
                         val intent = Intent(view.context, ActivityItem::class.java)
                         intent.putExtra("nama", namaS)

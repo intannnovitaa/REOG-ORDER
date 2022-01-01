@@ -18,12 +18,12 @@ class ViewholderItem(itemView:View): RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    fun setDetails(ctx: Context, nama:String, harga:String, stok:String) {
+    fun setDetails(ctx: Context, nama_item:String, harga:String, stok:String) {
         val namaItem = mView.findViewById(R.id.namaItem) as TextView
         val stokItem = mView.findViewById(R.id.stokItem) as TextView
         val hargaItem = mView.findViewById(R.id.hargaItem) as TextView
 
-        namaItem.text = nama
+        namaItem.text = nama_item
         stokItem.text = harga
         hargaItem.text = stok
     }
