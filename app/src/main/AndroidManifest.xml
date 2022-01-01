@@ -12,8 +12,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ActivityItem"
+            android:exported="false" />
+        <activity
+            android:name=".ActivityAbout"
+            android:exported="false" />
+        <activity
             android:name=".ActivityLoading"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

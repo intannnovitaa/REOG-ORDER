@@ -1,11 +1,17 @@
 package com.example.reogorder
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.reogorder.fragment.FragmentAkun
+import com.example.reogorder.fragment.FragmentBeranda
+import com.example.reogorder.fragment.FragmentPesanan
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ActivityUtama : AppCompatActivity() {
+    lateinit var alertDialog: AlertDialog.Builder
     lateinit var bottomNav: BottomNavigationView
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
@@ -30,6 +36,7 @@ class ActivityUtama : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_utama)
 
+        alertDialog = AlertDialog.Builder(this)
         bottomNav = findViewById(R.id.bottomNav)
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
         replaceFragment(FragmentBeranda())
@@ -39,5 +46,21 @@ class ActivityUtama : AppCompatActivity() {
         val fragmentTransition = supportFragmentManager.beginTransaction()
         fragmentTransition.replace(R.id.fragmentContainer, fragment)
         fragmentTransition.commit()
+    }
+
+    override fun onBackPressed() {
+        alertDialog.setTitle("Keluar Aplikasi")
+        alertDialog.setMessage("Apakah anda ingin keluar aplikasi ?")
+            .setCancelable(false)
+            .setPositiveButton("YA", object: DialogInterface.OnClickListener {
+                override fun onClick(dialog: DialogInterface, id:Int) {
+                    finishAffinity()
+                }
+            })
+            .setNegativeButton("TIDAK", object: DialogInterface.OnClickListener {
+                override fun onClick(dialog: DialogInterface, id:Int) {
+                    dialog.cancel()
+                }
+            }).create().show()
     }
 }

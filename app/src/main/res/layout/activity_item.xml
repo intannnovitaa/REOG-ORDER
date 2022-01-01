@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
-    tools:context=".fragment.FragmentBeranda">
+    tools:context=".ActivityItem">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -13,34 +13,46 @@
         android:background="@drawable/dec_gradasi" />
 
     <LinearLayout
-        android:id="@+id/titleBeranda"
+        android:id="@+id/titleItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginVertical="20dp"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/sanggarItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:layout_marginHorizontal="20dp"
-            android:text="Hi, Hilmy"
-            android:textSize="16dp"
+            android:text="Sanggar Tari"
+            android:textSize="20dp"
             android:textColor="@android:color/black"
             android:textStyle="bold"/>
 
         <TextView
+            android:id="@+id/alamatItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:layout_marginHorizontal="20dp"
-            android:text="Selamat Datang"
-            android:textSize="20dp"
+            android:text="Jl. Lidah Wetan, Lidah Wetan, Kec. Lakarsantri, Kota SBY, Jawa Timur 60213"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/nohpItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginHorizontal="20dp"
+            android:text="081234567890"
+            android:textSize="16dp"
             android:textColor="@android:color/black"
             android:textStyle="bold"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerBeranda"
+        android:id="@+id/recyclerItem"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/titleBeranda" />
+        android:layout_below="@+id/titleItem" />
 </RelativeLayout>
