@@ -1,18 +1,16 @@
 package com.example.model
 
 class Sanggar {
-    lateinit var id:String
-    lateinit var nama:String
-    lateinit var alamat:String
-    lateinit var nohp:String
-    lateinit var item: ArrayList<Item>
+    lateinit var id_sanggar:String
+    lateinit var nama_sanggar:String
+    lateinit var alamat_sanggar:String
+    lateinit var nohp_sanggar:String
 
     constructor(){}
-    constructor(id:String, nama:String, alamat:String, nohp:String, item:ArrayList<Item>){
-        this.id = id
-        this.nama = nama
-        this.alamat = alamat
-        this.nohp = nohp
-        this.item = item
+    constructor(id_sanggar:String, nama_sanggar:String, alamat_sanggar:String, nohp_sanggar:String){
+        this.id_sanggar = id_sanggar
+        this.nama_sanggar = nama_sanggar
+        this.alamat_sanggar = alamat_sanggar
+        this.nohp_sanggar = nohp_sanggar
     }
 }
