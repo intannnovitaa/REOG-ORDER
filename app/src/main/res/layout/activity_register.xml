@@ -5,11 +5,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
     tools:context=".ActivityRegister">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,6 +29,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="10dp"
             android:orientation="vertical">
+
             <EditText
                 android:id="@+id/textUsername"
                 android:layout_width="match_parent"
@@ -47,7 +50,7 @@
                 android:background="@drawable/box_email"
                 android:gravity="center_vertical"
                 android:hint="Masukkan Email"
-                android:inputType="textPassword"
+                android:inputType="textEmailAddress"
                 android:paddingLeft="60dp"
                 android:paddingBottom="5dp"
                 android:textColor="@color/colorGray"
@@ -73,7 +76,7 @@
                 android:background="@drawable/box_telp"
                 android:gravity="center_vertical"
                 android:hint="Masukkan No. Telepon"
-                android:inputType="textPassword"
+                android:inputType="number"
                 android:paddingLeft="60dp"
                 android:paddingBottom="5dp"
                 android:textColor="@color/colorGray"
@@ -86,7 +89,7 @@
                 android:background="@drawable/box_alamat"
                 android:gravity="center_vertical"
                 android:hint="Masukkan Alamat"
-                android:inputType="textPassword"
+                android:inputType="text"
                 android:paddingLeft="60dp"
                 android:paddingBottom="5dp"
                 android:textColor="@color/colorGray"
