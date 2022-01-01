@@ -117,14 +117,14 @@ class FragmentAkun : Fragment() {
 
         // save action
         btnSimpan.setOnClickListener {
-            btnSimpan.isClickable = true
-            btnSimpan.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
-
             alertDialog.setTitle("Simpan data")
             alertDialog.setMessage("Yakin mengubah data anda ?")
                 .setCancelable(false)
                 .setPositiveButton("YA", object: DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface?, id: Int) {
+                        btnSimpan.isClickable = true
+                        btnSimpan.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
+
                         val user_id = SP.getString("id", "").toString()
                         val model = User(
                             user_id,
