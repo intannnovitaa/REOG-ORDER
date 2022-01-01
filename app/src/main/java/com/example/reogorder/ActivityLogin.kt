@@ -3,6 +3,7 @@ package com.example.reogorder
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -34,47 +35,70 @@ class ActivityLogin : AppCompatActivity() {
         textPassword    = findViewById(R.id.textPassword)
 
         SP = getSharedPreferences("Login", Context.MODE_PRIVATE)
-        val vm = this
 
         btnLogin.setOnClickListener {
-            Log.d("Email", textEmail.text.toString())
-            FirebaseDatabase.getInstance().getReference("user").orderByChild("email").equalTo(textEmail.text.toString()).addListenerForSingleValueEvent(object : ValueEventListener{
-                override fun onCancelled(p0: DatabaseError) {}
-                override fun onDataChange(p0: DataSnapshot) {
-                    if (p0.exists()){
-                        for (h in p0.children){
-                            val us = h.getValue(User::class.java)
-                            if(us!!.password == textPassword.text.toString()){
-                                val editor = SP.edit()
-                                editor.putString("role", "user")
-                                editor.putString("id", us.id)
-                                editor.putString("nama", us.nama)
-                                editor.putString("email", us.email)
-                                editor.putString("password", us.password)
-                                editor.putString("nohp", us.nohp)
-                                editor.putString("alamat", us.alamat)
-                                editor.apply()
-
-                                val intent = Intent(vm, ActivityUtama::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
-                            else{
-                                Toast.makeText(vm, "Password salah", Toast.LENGTH_SHORT).show()
-                            }
-                        }
-                    }
-                    else{
-                        Toast.makeText(vm, "Email salah", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            })
-
+            if(validate()){
+                login()
+            }
         }
         textRegister.setOnClickListener {
             val intent = Intent(this, ActivityRegister::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun validate(): Boolean{
+        if(textEmail.text.toString().equals("")){
+            Toast.makeText(this, "Email tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        if(textPassword.text.toString().equals("")){
+            Toast.makeText(this, "Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
+            return false
+        }
+
+        return true
+    }
+
+    private fun login(){
+        val vm = this
+        btnLogin.isClickable = false
+        btnLogin.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
+
+        FirebaseDatabase.getInstance().getReference("user").orderByChild("email").equalTo(textEmail.text.toString()).addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {}
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()){
+                    for (h in p0.children){
+                        val us = h.getValue(User::class.java)
+                        if(us!!.password.equals(textPassword.text.toString())){
+                            val editor = SP.edit()
+                            editor.putString("role", "user")
+                            editor.putString("id", us.id)
+                            editor.putString("email", us.email)
+                            editor.putString("password", us.password)
+                            editor.putString("nohp", us.nohp)
+                            editor.putString("alamat", us.alamat)
+                            editor.apply()
+
+                            val intent = Intent(vm, ActivityUtama::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        else{
+                            btnLogin.isClickable = true
+                            btnLogin.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+                            Toast.makeText(vm, "Password salah", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+                else{
+                    btnLogin.isClickable = true
+                    btnLogin.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+                    Toast.makeText(vm, "Email salah", Toast.LENGTH_SHORT).show()
+                }
+            }
+        })
     }
 
     override fun onBackPressed() {

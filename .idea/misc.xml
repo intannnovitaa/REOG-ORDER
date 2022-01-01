@@ -5,25 +5,21 @@
       <map>
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/drawable/box_border.xml" value="0.2518518518518518" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/drawable/box_button.xml" value="0.2518518518518518" />
-        <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/drawable/dec_gradasi.xml" value="0.2490740740740741" />
-        <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/activity_about.xml" value="0.25" />
-        <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/activity_item.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/activity_loading.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/activity_register.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/activity_utama.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/activity_welcome.xml" value="0.25" />
-        <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/card_Beranda.xml" value="0.25" />
-        <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/card_beranda.xml" value="0.25" />
-        <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/card_item.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/fragment_akun.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/fragment_beranda.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/layout/fragment_pesanan.xml" value="0.25" />
-        <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/menu/bar_beranda.xml" value="0.25" />
         <entry key="..\:/Project/Client/ReogOrder/app/src/main/res/menu/nav_bottom.xml" value="0.25" />
+        <entry key="..\:/pejam/Mintol/Skripsi Intan/Reog-Order/app/src/main/res/drawable/box_button.xml" value="0.2203125" />
         <entry key="..\:/pejam/Mintol/Skripsi Intan/Reog-Order/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/pejam/Mintol/Skripsi Intan/Reog-Order/app/src/main/res/layout/activity_register.xml" value="0.15" />
         <entry key="..\:/pejam/Mintol/Skripsi Intan/Reog-Order/app/src/main/res/layout/activity_welcome.xml" value="0.22" />
+        <entry key="..\:/pejam/Mintol/Skripsi Intan/Reog-Order/app/src/main/res/layout/fragment_akun.xml" value="0.18854166666666666" />
       </map>
     </option>
   </component>

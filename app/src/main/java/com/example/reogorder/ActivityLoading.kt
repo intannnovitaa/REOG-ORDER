@@ -20,7 +20,7 @@ class ActivityLoading : AppCompatActivity() {
                 try {
                     sleep(2500)
                     var intent = Intent(applicationContext, ActivityWelcome::class.java)
-                    if(SP.getString("status", "") == "login"){
+                    if(SP.getString("role", "") == "user"){
                         intent =    Intent(applicationContext, ActivityUtama::class.java)
                     }
                     startActivity(intent)
