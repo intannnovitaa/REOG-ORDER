@@ -1,7 +1,9 @@
 package com.example.reogorder
 
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -11,16 +13,28 @@ class ActivityWelcome : AppCompatActivity() {
     lateinit var alertDialog: AlertDialog.Builder
     lateinit var btnGuest: Button
     lateinit var btnLogin: Button
+    lateinit var SP: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
+        SP = getSharedPreferences("Login", Context.MODE_PRIVATE)
         alertDialog = AlertDialog.Builder(this)
         btnGuest = findViewById(R.id.btnGuest)
         btnLogin = findViewById(R.id.btnLogin)
 
         btnGuest.setOnClickListener {
+            val editor = SP.edit()
+            editor.putString("role", "")
+            editor.putString("id", "")
+            editor.putString("nama", "Guest")
+            editor.putString("email", "")
+            editor.putString("password", "")
+            editor.putString("nohp", "")
+            editor.putString("alamat", "")
+            editor.apply()
+
             val intent = Intent(this, ActivityUtama::class.java)
             startActivity(intent)
             finish()

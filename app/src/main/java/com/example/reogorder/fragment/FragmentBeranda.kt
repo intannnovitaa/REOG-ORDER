@@ -1,6 +1,8 @@
 package com.example.reogorder.fragment
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import android.widget.TextView
@@ -17,9 +19,9 @@ import com.google.firebase.database.*
 class FragmentBeranda : Fragment() {
     lateinit var mLayoutManager: LinearLayoutManager
     lateinit var mRecyclerView: RecyclerView
+    lateinit var SP: SharedPreferences
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
         return inflater.inflate(R.layout.fragment_beranda, container, false)
     }
 
@@ -34,6 +36,10 @@ class FragmentBeranda : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        SP = activity?.applicationContext!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
+        val txtName = activity?.findViewById<TextView>(R.id.txtName)
+        txtName!!.text = SP.getString("nama", "")
+
         val query = FirebaseDatabase.getInstance().getReference("sanggar")
         val firebaseRecyclerAdapter = object: FirebaseRecyclerAdapter<Sanggar, ViewholderBeranda>(
             Sanggar::class.java,

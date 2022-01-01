@@ -75,6 +75,7 @@ class ActivityLogin : AppCompatActivity() {
                             val editor = SP.edit()
                             editor.putString("role", "user")
                             editor.putString("id", us.id)
+                            editor.putString("nama", us.nama)
                             editor.putString("email", us.email)
                             editor.putString("password", us.password)
                             editor.putString("nohp", us.nohp)
