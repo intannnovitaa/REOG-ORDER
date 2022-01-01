@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adapter.ViewholderItem
@@ -21,8 +20,7 @@ class ActivityItem : AppCompatActivity() {
     lateinit var sanggarItem: TextView
     lateinit var alamatItem: TextView
     lateinit var nohpItem: TextView
-    lateinit var idsItem: TextView
-    var idsang: String? = null
+    var idsItem: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +34,6 @@ class ActivityItem : AppCompatActivity() {
         sanggarItem = findViewById(R.id.sanggarItem)
         alamatItem = findViewById(R.id.alamatItem)
         nohpItem = findViewById(R.id.nohpItem)
-        idsItem = findViewById(R.id.idsItem)
 
         databaseReference = FirebaseDatabase.getInstance().getReference("sanggar")
         val query = databaseReference.orderByChild("nama_sanggar").equalTo(intent.getStringExtra("nama"))
@@ -44,8 +41,8 @@ class ActivityItem : AppCompatActivity() {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 for (snapshot1 in datasnapshot.children) {
                     val allocation = snapshot1.getValue(Sanggar::class.java)
-                    idsItem.text = allocation!!.id_sanggar
-                    idsang = idsItem.text.toString()
+                    idsItem = allocation!!.id_sanggar
+                    listItem()
                     sanggarItem.text = allocation.nama_sanggar
                     alamatItem.text = allocation.alamat_sanggar
                     nohpItem.text = allocation.nohp_sanggar
@@ -55,12 +52,8 @@ class ActivityItem : AppCompatActivity() {
         })
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        Toast.makeText(this, idsang.toString(), Toast.LENGTH_SHORT).show()
-
-        val query = FirebaseDatabase.getInstance().getReference("item").orderByChild("id_sanggar").equalTo(idsItem.text.toString())
+    fun listItem() {
+        val query = FirebaseDatabase.getInstance().getReference("item").orderByChild("id_sanggar").equalTo(idsItem.toString())
         val firebaseRecyclerAdapter = object: FirebaseRecyclerAdapter<Item, ViewholderItem>(
             Item::class.java,
             R.layout.card_item,
