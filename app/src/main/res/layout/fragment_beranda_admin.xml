@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
-    tools:context=".customer.fragment.FragmentPesanan">
+    tools:context=".admin.fragment.FragmentBerandaAdmin">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarPesanan"
+        android:id="@+id/toolbarBerandaAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:title="Pesanan" />
+        app:title="Beranda" />
+
 </RelativeLayout>

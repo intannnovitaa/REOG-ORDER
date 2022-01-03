@@ -1,4 +1,4 @@
-package com.example.reogorder
+package com.example.reogorder.customer
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.adapter.ViewholderItem
-import com.example.model.Item
-import com.example.model.Sanggar
+import com.example.reogorder.adapter.ViewholderItem
+import com.example.reogorder.model.Item
+import com.example.reogorder.model.Sanggar
+import com.example.reogorder.R
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.google.firebase.database.*
 

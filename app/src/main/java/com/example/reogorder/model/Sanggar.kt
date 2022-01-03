@@ -1,4 +1,4 @@
-package com.example.model
+package com.example.reogorder.model
 
 class Sanggar {
     lateinit var id_sanggar:String

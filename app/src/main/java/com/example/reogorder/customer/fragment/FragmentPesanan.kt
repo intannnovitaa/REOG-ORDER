@@ -1,4 +1,4 @@
-package com.example.reogorder.fragment
+package com.example.reogorder.customer.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

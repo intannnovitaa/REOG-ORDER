@@ -1,4 +1,4 @@
-package com.example.reogorder.fragment
+package com.example.reogorder.customer.fragment
 
 import android.app.AlertDialog
 import android.content.Context
@@ -14,7 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import com.example.model.User
+import com.example.reogorder.model.User
 import com.example.reogorder.ActivityAbout
 import com.example.reogorder.ActivityWelcome
 import com.example.reogorder.R
@@ -49,7 +49,7 @@ class FragmentAkun : Fragment() {
         super.onCreateOptionsMenu(menu, inflater)
 
         val inflater = requireActivity().menuInflater
-        inflater.inflate(R.menu.bar_beranda, menu)
+        inflater.inflate(R.menu.bar_akun, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

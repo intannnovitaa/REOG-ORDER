@@ -1,4 +1,4 @@
-package com.example.adapter
+package com.example.reogorder.adapter
 
 import android.content.Context
 import android.view.View
@@ -6,7 +6,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reogorder.R
 
-class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
+class ViewholderItem(itemView:View): RecyclerView.ViewHolder(itemView) {
     internal var mView:View = itemView
     private var mClickListener: ClickListener? = null
 
@@ -18,14 +18,14 @@ class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    fun setDetails(ctx: Context, nama_sanggar:String, alamat_sanggar:String, nohp_sanggar:String) {
-        val namaSanggar = mView.findViewById(R.id.namaSanggar) as TextView
-        val alamatSanggar = mView.findViewById(R.id.alamatSanggar) as TextView
-        val nohpSanggar = mView.findViewById(R.id.nohpSanggar) as TextView
+    fun setDetails(ctx: Context, nama_item:String, harga:String, stok:String) {
+        val namaItem = mView.findViewById(R.id.namaItem) as TextView
+        val stokItem = mView.findViewById(R.id.stokItem) as TextView
+        val hargaItem = mView.findViewById(R.id.hargaItem) as TextView
 
-        namaSanggar.text = nama_sanggar
-        alamatSanggar.text = alamat_sanggar
-        nohpSanggar.text = nohp_sanggar
+        namaItem.text = nama_item
+        stokItem.text = harga
+        hargaItem.text = stok
     }
 
     interface ClickListener {
@@ -33,7 +33,7 @@ class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
         fun onItemLongClick(view:View, position:Int)
     }
 
-    fun setOnClickListener(clickListener:ViewholderBeranda.ClickListener) {
+    fun setOnClickListener(clickListener:ViewholderItem.ClickListener) {
         mClickListener = clickListener
     }
 }

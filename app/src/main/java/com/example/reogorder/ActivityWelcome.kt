@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import com.example.reogorder.admin.ActivityUtamaAdmin
+import com.example.reogorder.customer.ActivityUtama
 
 class ActivityWelcome : AppCompatActivity() {
     lateinit var alertDialog: AlertDialog.Builder
@@ -38,6 +40,10 @@ class ActivityWelcome : AppCompatActivity() {
             val intent = Intent(this, ActivityUtama::class.java)
             startActivity(intent)
             finish()
+
+//            val intent = Intent(this, ActivityUtamaAdmin::class.java)
+//            startActivity(intent)
+//            finish()
         }
         btnLogin.setOnClickListener {
             val intent = Intent(this, ActivityLogin::class.java)

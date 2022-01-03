@@ -1,4 +1,4 @@
-package com.example.model
+package com.example.reogorder.model
 
 class Item {
     lateinit var id_item: String

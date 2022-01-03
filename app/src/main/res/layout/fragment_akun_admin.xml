@@ -6,10 +6,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
-    tools:context=".customer.fragment.FragmentAkun">
+    tools:context=".admin.fragment.FragmentAkunAdmin">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarAkun"
+        android:id="@+id/toolbarAkunAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
@@ -19,7 +19,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbarAkun"
+        android:layout_below="@id/toolbarAkunAdmin"
         android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
@@ -62,8 +62,8 @@
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
-                        <EditText
-                            android:id="@+id/namaAkun"
+                        <TextView
+                            android:id="@+id/namaAkunAdmin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -112,8 +112,8 @@
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
-                        <EditText
-                            android:id="@+id/emailAkun"
+                        <TextView
+                            android:id="@+id/emailAkunAdmin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -162,8 +162,8 @@
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
-                        <EditText
-                            android:id="@+id/passwordAkun"
+                        <TextView
+                            android:id="@+id/passwordAkunAdmin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -212,8 +212,8 @@
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
-                        <EditText
-                            android:id="@+id/nohpAkun"
+                        <TextView
+                            android:id="@+id/nohpAkunAdmin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -262,8 +262,8 @@
                             android:textSize="15dp"
                             android:textStyle="bold" />
 
-                        <EditText
-                            android:id="@+id/alamatAkun"
+                        <TextView
+                            android:id="@+id/alamatAkunAdmin"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -277,35 +277,17 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="165dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/btnLogout"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@drawable/box_button"
-                    android:backgroundTint="@color/colorAccent"
-                    android:text="LOG OUT"
-                    android:textColor="@android:color/white"
-                    android:textSize="15dp" />
-
-                <Button
-                    android:id="@+id/btnSimpan"
-                    android:layout_width="0dp"
-                    android:layout_height="55dp"
-                    android:layout_weight="1"
-                    android:layout_marginHorizontal="5dp"
-                    android:background="@drawable/box_button"
-                    android:backgroundTint="@color/colorPrimary"
-                    android:text="SIMPAN"
-                    android:textColor="@android:color/white"
-                    android:textSize="15dp" />
-            </LinearLayout>
+                android:background="@drawable/box_button"
+                android:backgroundTint="@color/colorAccent"
+                android:text="LOG OUT"
+                android:textColor="@android:color/white"
+                android:textSize="15dp" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

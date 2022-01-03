@@ -4,14 +4,13 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.example.model.User
+import com.example.reogorder.model.User
+import com.example.reogorder.customer.ActivityUtama
 import com.google.firebase.database.FirebaseDatabase
 
 class ActivityRegister : AppCompatActivity() {

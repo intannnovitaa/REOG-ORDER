@@ -12,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ActivityItem"
+            android:name=".admin.ActivityEditAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".admin.ActivityUtamaAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".customer.ActivityItem"
             android:exported="false" />
         <activity
             android:name=".ActivityAbout"
@@ -36,7 +42,7 @@
             android:name=".ActivityLogin"
             android:exported="false" />
         <activity
-            android:name=".ActivityUtama"
+            android:name=".customer.ActivityUtama"
             android:exported="false" />
     </application>
 

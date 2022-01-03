@@ -1,13 +1,14 @@
-package com.example.reogorder
+package com.example.reogorder.customer
 
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.example.reogorder.fragment.FragmentAkun
-import com.example.reogorder.fragment.FragmentBeranda
-import com.example.reogorder.fragment.FragmentPesanan
+import com.example.reogorder.R
+import com.example.reogorder.customer.fragment.FragmentAkun
+import com.example.reogorder.customer.fragment.FragmentBeranda
+import com.example.reogorder.customer.fragment.FragmentPesanan
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ActivityUtama : AppCompatActivity() {
@@ -16,7 +17,7 @@ class ActivityUtama : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when(item.itemId) {
-            R.id.home -> {
+            R.id.beranda -> {
                 replaceFragment(FragmentBeranda())
                 return@OnNavigationItemSelectedListener true
             }

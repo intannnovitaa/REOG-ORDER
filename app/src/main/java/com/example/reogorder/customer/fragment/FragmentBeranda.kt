@@ -1,4 +1,4 @@
-package com.example.reogorder.fragment
+package com.example.reogorder.customer.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -9,9 +9,9 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.adapter.ViewholderBeranda
-import com.example.model.Sanggar
-import com.example.reogorder.ActivityItem
+import com.example.reogorder.adapter.ViewholderBeranda
+import com.example.reogorder.model.Sanggar
+import com.example.reogorder.customer.ActivityItem
 import com.example.reogorder.R
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.google.firebase.database.*
