@@ -58,7 +58,7 @@
                         app:srcCompat="@drawable/nav_beranda" />
 
                     <EditText
-                        android:id="@+id/customerName"
+                        android:id="@+id/namaSanggar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -82,7 +82,7 @@
                         app:srcCompat="@drawable/ic_alamat" />
 
                     <EditText
-                        android:id="@+id/customerAddress"
+                        android:id="@+id/alamatSanggar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -106,7 +106,7 @@
                         app:srcCompat="@drawable/ic_telp" />
 
                     <EditText
-                        android:id="@+id/customerContact"
+                        android:id="@+id/telpSanggar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -115,6 +115,7 @@
                         android:hint="Masukkan No. Telp Sanggar"
                         android:textColor="@color/colorGray"
                         android:textSize="15dp"
+                        android:inputType="number"
                         android:background="@android:color/white" />
                 </LinearLayout>
 
