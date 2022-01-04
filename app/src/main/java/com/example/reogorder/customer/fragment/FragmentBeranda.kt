@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -48,17 +49,18 @@ class FragmentBeranda : Fragment() {
             query
         ) {
             override fun populateViewHolder(viewHolder:ViewholderBeranda, model:Sanggar, position:Int) {
-                viewHolder.setDetails(activity!!.applicationContext, model.nama_sanggar, model.alamat_sanggar, model.nohp_sanggar)
+                viewHolder.setDetails(activity!!.applicationContext, model.id_sanggar, model.nama_sanggar, model.alamat_sanggar, model.nohp_sanggar)
             }
             override fun onCreateViewHolder(parent:ViewGroup, viewType:Int):ViewholderBeranda {
                 val viewHolder = super.onCreateViewHolder(parent, viewType)
                 viewHolder.setOnClickListener(object: ViewholderBeranda.ClickListener {
                     override fun onItemClick(view:View, position:Int) {
-                        val namaSanggar = view.findViewById(R.id.namaSanggar) as TextView
-                        val namaS = namaSanggar.text.toString()
+//                        val namaSanggar = view.findViewById(R.id.namaSanggar) as TextView
+//                        val namaS = namaSanggar.text.toString()
                         val intent = Intent(view.context, ActivityItem::class.java)
-                        intent.putExtra("nama", namaS)
+                        intent.putExtra("id_sanggar", viewHolder.id_sanggar)
                         startActivity(intent)
+//                        Log.d("id_sanggar", viewHolder.id_sanggar)
                     }
                     override fun onItemLongClick(view:View, position:Int) {}
                 })

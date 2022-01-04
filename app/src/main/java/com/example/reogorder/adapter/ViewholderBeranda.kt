@@ -9,6 +9,7 @@ import com.example.reogorder.R
 class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
     internal var mView:View = itemView
     private var mClickListener: ClickListener? = null
+    var id_sanggar = ""
 
     init{
         itemView.setOnClickListener { view -> mClickListener!!.onItemClick(view, adapterPosition) }
@@ -18,7 +19,8 @@ class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    fun setDetails(ctx: Context, nama_sanggar:String, alamat_sanggar:String, nohp_sanggar:String) {
+    fun setDetails(ctx: Context, id:String, nama_sanggar:String, alamat_sanggar:String, nohp_sanggar:String) {
+        this.id_sanggar = id
         val namaSanggar = mView.findViewById(R.id.namaSanggar) as TextView
         val alamatSanggar = mView.findViewById(R.id.alamatSanggar) as TextView
         val nohpSanggar = mView.findViewById(R.id.nohpSanggar) as TextView

@@ -21,7 +21,7 @@ class ActivityItem : AppCompatActivity() {
     lateinit var sanggarItem: TextView
     lateinit var alamatItem: TextView
     lateinit var nohpItem: TextView
-    var idsItem: String? = null
+//    var idsItem: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,24 +37,26 @@ class ActivityItem : AppCompatActivity() {
         nohpItem = findViewById(R.id.nohpItem)
 
         databaseReference = FirebaseDatabase.getInstance().getReference("sanggar")
-        val query = databaseReference.orderByChild("nama_sanggar").equalTo(intent.getStringExtra("nama"))
-        query.addValueEventListener(object: ValueEventListener {
+        val query = databaseReference.orderByKey().equalTo(intent.getStringExtra("id_sanggar").toString())
+        query.addListenerForSingleValueEvent(object: ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 for (snapshot1 in datasnapshot.children) {
                     val allocation = snapshot1.getValue(Sanggar::class.java)
-                    idsItem = allocation!!.id_sanggar
-                    listItem()
-                    sanggarItem.text = allocation.nama_sanggar
+//                    idsItem = allocation!!.id_sanggar
+//                    listItem(allocation!!.id_sanggar)
+                    sanggarItem.text = allocation!!.nama_sanggar
                     alamatItem.text = allocation.alamat_sanggar
                     nohpItem.text = allocation.nohp_sanggar
                 }
             }
             override fun onCancelled(databaseError: DatabaseError) {}
         })
+
+        listItem()
     }
 
     fun listItem() {
-        val query = FirebaseDatabase.getInstance().getReference("item").orderByChild("id_sanggar").equalTo(idsItem.toString())
+        val query = FirebaseDatabase.getInstance().getReference("item").child(intent.getStringExtra("id_sanggar").toString())
         val firebaseRecyclerAdapter = object: FirebaseRecyclerAdapter<Item, ViewholderItem>(
             Item::class.java,
             R.layout.card_item,
