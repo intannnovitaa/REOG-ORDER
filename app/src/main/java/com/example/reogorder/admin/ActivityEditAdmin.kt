@@ -2,7 +2,9 @@ package com.example.reogorder.admin
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.reogorder.R
@@ -54,6 +56,8 @@ class ActivityEditAdmin : AppCompatActivity() {
     lateinit var databaseSanggar: DatabaseReference
     lateinit var databaseItem: DatabaseReference
     var id_sanggar = 0
+    var idsEdit: String? = null
+    var id_item = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -98,6 +102,8 @@ class ActivityEditAdmin : AppCompatActivity() {
         hargaAngklung = findViewById(R.id.hargaAngklung)
         stokAngklung = findViewById(R.id.stokAngklung)
 
+        updateSanggar()
+
         databaseSanggar = FirebaseDatabase.getInstance().getReference("sanggar")
         databaseSanggar.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -108,12 +114,10 @@ class ActivityEditAdmin : AppCompatActivity() {
             override fun onCancelled(error: DatabaseError) {}
         })
 
-        btnSimpan.setOnClickListener(object: View.OnClickListener {
-            override fun onClick(view: View) {
-                addSanggar()
-                addItem()
-            }
-        })
+        btnSimpan.setOnClickListener {
+            addSanggar()
+            addItem()
+        }
     }
 
     private fun addSanggar() {
@@ -130,6 +134,93 @@ class ActivityEditAdmin : AppCompatActivity() {
         } else {
             Toast.makeText(this, "Lengkapi Data", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun updateSanggar() {
+        databaseSanggar = FirebaseDatabase.getInstance().reference
+        val querySanggar = databaseSanggar.child("sanggar").orderByKey().equalTo(intent.getStringExtra("id_sanggar").toString())
+        querySanggar.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                for (snapshot1 in datasnapshot.children) {
+                    val allocation = snapshot1.getValue(Sanggar::class.java)
+                    idsEdit = allocation!!.id_sanggar
+                    namaSanggar.text = Editable.Factory.getInstance().newEditable(allocation.nama_sanggar)
+                    alamatSanggar.text = Editable.Factory.getInstance().newEditable(allocation.alamat_sanggar)
+                    telpSanggar.text = Editable.Factory.getInstance().newEditable(allocation.nohp_sanggar)
+                }
+            }
+            override fun onCancelled(databaseError: DatabaseError) {}
+        })
+        updateItem()
+    }
+
+    private fun updateItem() {
+        databaseItem = FirebaseDatabase.getInstance().reference
+        val queryItem = databaseItem.child("item").child(intent.getStringExtra("id_sanggar").toString())
+        queryItem.addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(datasnapshot: DataSnapshot) {
+                for (snapshot1 in datasnapshot.children) {
+                    val allocation = snapshot1.getValue(Item::class.java)
+                    if(allocation!!.nama_item == "Barong"){
+                        namaBarong.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaBarong.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokBarong.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Jathil"){
+                        namaJathil.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaJathil.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokJathil.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Klonosewandono"){
+                        namaKlonosewandono.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaKlonosewandono.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokKlonosewandono.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Bujang Ganong"){
+                        namaBujang.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaBujang.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokBujang.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Warog"){
+                        namaWarog.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaWarog.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokWarog.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Gendang"){
+                        namaGendang.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaGendang.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokGendang.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Ketipung"){
+                        namaKetipung.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaKetipung.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokKetipung.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Slompret"){
+                        namaSlompret.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaSlompret.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokSlompret.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Kenong"){
+                        namaKenong.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaKenong.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokKenong.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Gong"){
+                        namaGong.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaGong.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokGong.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+                    if(allocation.nama_item == "Angklung"){
+                        namaAngklung.text = Editable.Factory.getInstance().newEditable(allocation.nama_item)
+                        hargaAngklung.text = Editable.Factory.getInstance().newEditable(allocation.harga)
+                        stokAngklung.text = Editable.Factory.getInstance().newEditable(allocation.stok)
+                    }
+
+                }
+            }
+            override fun onCancelled(databaseError: DatabaseError) {}
+        })
     }
 
     private fun addItem() {
@@ -169,7 +260,7 @@ class ActivityEditAdmin : AppCompatActivity() {
         val stok_angklung = stokAngklung.text.toString().trim()
 
         databaseItem = FirebaseDatabase.getInstance().getReference("item")
-        val id_item = databaseItem.push().key.toString()
+        id_item = databaseItem.push().key.toString()
 
         if(!TextUtils.isEmpty(nama_barong) && !TextUtils.isEmpty(harga_barong) && !TextUtils.isEmpty(stok_barong) &&
             !TextUtils.isEmpty(nama_jathil) && !TextUtils.isEmpty(harga_jathil) && !TextUtils.isEmpty(stok_jathil) &&
@@ -185,27 +276,27 @@ class ActivityEditAdmin : AppCompatActivity() {
             !TextUtils.isEmpty(stok_angklung)) {
 
             val addBarong = Item(id_item, id_sanggar, nama_barong, harga_barong, stok_barong)
-            databaseItem.child(id_item + "1").setValue(addBarong)
+            databaseItem.child(id_sanggar).child(id_item + "1").setValue(addBarong)
             val addJathil = Item(id_item, id_sanggar, nama_jathil, harga_jathil, stok_jathil)
-            databaseItem.child(id_item + "2").setValue(addJathil)
+            databaseItem.child(id_sanggar).child(id_item + "2").setValue(addJathil)
             val addKlonosewandono = Item(id_item, id_sanggar, nama_klonosewandono, harga_klonosewandono, stok_klonosewandono)
-            databaseItem.child(id_item + "3").setValue(addKlonosewandono)
+            databaseItem.child(id_sanggar).child(id_item + "3").setValue(addKlonosewandono)
             val addBujang = Item(id_item, id_sanggar, nama_bujang, harga_bujang, stok_bujang)
-            databaseItem.child(id_item + "4").setValue(addBujang)
+            databaseItem.child(id_sanggar).child(id_item + "4").setValue(addBujang)
             val addWarog = Item(id_item, id_sanggar, nama_warog, harga_warog, stok_warog)
-            databaseItem.child(id_item + "5").setValue(addWarog)
+            databaseItem.child(id_sanggar).child(id_item + "5").setValue(addWarog)
             val addGendang = Item(id_item, id_sanggar, nama_gendang, harga_gendang, stok_gendang)
-            databaseItem.child(id_item + "6").setValue(addGendang)
+            databaseItem.child(id_sanggar).child(id_item + "6").setValue(addGendang)
             val addKetipung = Item(id_item, id_sanggar, nama_ketipung, harga_ketipung, stok_ketipung)
-            databaseItem.child(id_item + "7").setValue(addKetipung)
+            databaseItem.child(id_sanggar).child(id_item + "7").setValue(addKetipung)
             val addSlompret = Item(id_item, id_sanggar, nama_slompret, harga_slompret, stok_slompret)
-            databaseItem.child(id_item + "8").setValue(addSlompret)
+            databaseItem.child(id_sanggar).child(id_item + "8").setValue(addSlompret)
             val addKenong = Item(id_item, id_sanggar, nama_kenong, harga_kenong, stok_kenong)
-            databaseItem.child(id_item + "9").setValue(addKenong)
+            databaseItem.child(id_sanggar).child(id_item + "9").setValue(addKenong)
             val addGong = Item(id_item, id_sanggar, nama_gong, harga_gong, stok_gong)
-            databaseItem.child(id_item + "10").setValue(addGong)
+            databaseItem.child(id_sanggar).child(id_item + "10").setValue(addGong)
             val addAngklung = Item(id_item, id_sanggar, nama_angklung, harga_angklung, stok_angklung)
-            databaseItem.child(id_item + "11").setValue(addAngklung)
+            databaseItem.child(id_sanggar).child(id_item + "11").setValue(addAngklung)
 
             Toast.makeText(this, "Data Tersimpan", Toast.LENGTH_LONG).show()
             finish()
@@ -213,4 +304,11 @@ class ActivityEditAdmin : AppCompatActivity() {
             Toast.makeText(this, "Lengkapi Data", Toast.LENGTH_LONG).show()
         }
     }
+
+//    private fun deleteItem() {
+//        databaseSanggar = FirebaseDatabase.getInstance().getReference("sanggar")
+//        val deleteQuery = databaseSanggar.child("$dd" + " (" + "$cc" + ")")
+//        deleteQuery.removeValue()
+//        finish()
+//    }
 }

@@ -55,12 +55,9 @@ class FragmentBeranda : Fragment() {
                 val viewHolder = super.onCreateViewHolder(parent, viewType)
                 viewHolder.setOnClickListener(object: ViewholderBeranda.ClickListener {
                     override fun onItemClick(view:View, position:Int) {
-//                        val namaSanggar = view.findViewById(R.id.namaSanggar) as TextView
-//                        val namaS = namaSanggar.text.toString()
                         val intent = Intent(view.context, ActivityItem::class.java)
                         intent.putExtra("id_sanggar", viewHolder.id_sanggar)
                         startActivity(intent)
-//                        Log.d("id_sanggar", viewHolder.id_sanggar)
                     }
                     override fun onItemLongClick(view:View, position:Int) {}
                 })

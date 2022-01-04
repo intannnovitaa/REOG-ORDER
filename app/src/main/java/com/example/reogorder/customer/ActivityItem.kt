@@ -21,7 +21,6 @@ class ActivityItem : AppCompatActivity() {
     lateinit var sanggarItem: TextView
     lateinit var alamatItem: TextView
     lateinit var nohpItem: TextView
-//    var idsItem: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,8 +41,6 @@ class ActivityItem : AppCompatActivity() {
             override fun onDataChange(datasnapshot: DataSnapshot) {
                 for (snapshot1 in datasnapshot.children) {
                     val allocation = snapshot1.getValue(Sanggar::class.java)
-//                    idsItem = allocation!!.id_sanggar
-//                    listItem(allocation!!.id_sanggar)
                     sanggarItem.text = allocation!!.nama_sanggar
                     alamatItem.text = allocation.alamat_sanggar
                     nohpItem.text = allocation.nohp_sanggar
@@ -51,7 +48,6 @@ class ActivityItem : AppCompatActivity() {
             }
             override fun onCancelled(databaseError: DatabaseError) {}
         })
-
         listItem()
     }
 
