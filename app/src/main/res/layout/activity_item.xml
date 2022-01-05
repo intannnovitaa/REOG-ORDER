@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -51,9 +52,1104 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerItem"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/titleItem" />
+        android:layout_below="@+id/titleItem"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutBarong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangBarongItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahBarongItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahBarongItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutBarong"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/namaBarongItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Barong"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokBarongItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaBarongItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutJathil"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangJathilItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahJathilItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahJathilItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutJathil"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaJathilItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Jathil"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokJathilItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaJathilItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutKlonosewandono"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangKlonosewandonoItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahKlonosewandonoItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahKlonosewandonoItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutKlonosewandono"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaKlonosewandonoItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Klonosewandono"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokKlonosewandonoItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaKlonosewandonoItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutBujang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangBujangItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahBujangItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahBujangItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutBujang"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaBujangItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Bujang Ganong"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokBujangItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaBujangItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutWarog"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangWarogItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahWarogItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahWarogItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutWarog"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaWarogItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Warog"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokWarogItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaWarogItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutGendang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangGendangItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahGendangItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahGendangItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutGendang"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaGendangItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Gendang"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokGendangItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaGendangItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutKetipung"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangKetipungItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahKetipungItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahKetipungItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutKetipung"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaKetipungItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Ketipung"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokKetipungItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaKetipungItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutSlompret"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangSlompretItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahSlompretItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahSlompretItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutSlompret"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaSlompretItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Slompret"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokSlompretItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaSlompretItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutKenong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangKenongItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahKenongItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahKenongItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutKenong"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaKenongItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Kenong"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokKenongItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaKenongItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutGong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangGongItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahGongItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahGongItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutGong"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaGongItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Gong"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokGongItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaGongItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginVertical="5dp"
+                app:cardElevation="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+                    <LinearLayout
+                        android:id="@+id/layoutAngklung"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentRight="true"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:id="@+id/kurangAngklungItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/ic_kurang"
+                            android:backgroundTint="@color/colorPrimary"/>
+
+                        <EditText
+                            android:id="@+id/jumlahAngklungItem"
+                            android:layout_width="40dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="2dp"
+                            android:backgroundTint="@color/colorAccent"
+                            android:text="0"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/black"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:editable="false"/>
+
+                        <ImageView
+                            android:id="@+id/tambahAngklungItem"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@drawable/ic_tambah_1"
+                            android:backgroundTint="@color/colorPrimary"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toLeftOf="@+id/layoutAngklung"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/namaAngklungItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="Angklung"
+                            android:textColor="@android:color/black"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:orientation="horizontal">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tersedia :  "
+                                android:textSize="15dp" />
+
+                            <TextView
+                                android:id="@+id/stokAngklungItem"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="20"
+                                android:textSize="15dp" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/hargaAngklungItem"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="5dp"
+                            android:text="Rp.200.000,00"
+                            android:textColor="@color/colorAccent"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <Button
+                android:id="@+id/btnCheckout"
+                android:layout_width="165dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/box_button"
+                android:backgroundTint="@color/colorAccent"
+                android:text="CHECK OUT"
+                android:textColor="@android:color/white"
+                android:textSize="15dp" />
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>
