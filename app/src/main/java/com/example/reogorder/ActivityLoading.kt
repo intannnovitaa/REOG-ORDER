@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.reogorder.admin.ActivityUtamaAdmin
 import com.example.reogorder.customer.ActivityUtama
 
 class ActivityLoading : AppCompatActivity() {
@@ -21,9 +22,10 @@ class ActivityLoading : AppCompatActivity() {
                 try {
                     sleep(2500)
                     var intent = Intent(applicationContext, ActivityWelcome::class.java)
-                    if(SP.getString("role", "") == "user"){
+                    if(SP.getString("role", "") == "user")
                         intent =    Intent(applicationContext, ActivityUtama::class.java)
-                    }
+                    else if(SP.getString("role", "") == "admin")
+                        intent =    Intent(applicationContext, ActivityUtamaAdmin::class.java)
                     startActivity(intent)
                     finish()
                 } catch (e: Exception){

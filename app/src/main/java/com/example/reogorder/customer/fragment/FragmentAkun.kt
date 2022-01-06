@@ -132,7 +132,8 @@ class FragmentAkun : Fragment() {
                             email.text.toString(),
                             password.text.toString(),
                             nohp.text.toString(),
-                            alamat.text.toString()
+                            alamat.text.toString(),
+                            SP.getString("role", "").toString()
                         )
 
                         val ref = FirebaseDatabase.getInstance().getReference("user")

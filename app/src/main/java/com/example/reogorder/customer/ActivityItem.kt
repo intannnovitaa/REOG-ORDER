@@ -1,10 +1,12 @@
 package com.example.reogorder.customer
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.view.View
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -12,7 +14,10 @@ import android.widget.TextView
 import com.example.reogorder.model.Item
 import com.example.reogorder.model.Sanggar
 import com.example.reogorder.R
+import com.example.reogorder.model.Pesanan
 import com.google.firebase.database.*
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class ActivityItem : AppCompatActivity() {
     lateinit var databaseSanggar: DatabaseReference
@@ -101,9 +106,13 @@ class ActivityItem : AppCompatActivity() {
     var countGong = 0
     var countAngklung = 0
 
+    var itemArray: ArrayList<Item> = arrayListOf()
+    lateinit var SP: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item)
+        SP = getSharedPreferences("Order", Context.MODE_PRIVATE)
 
         sanggarItem = findViewById(R.id.sanggarItem)
         alamatItem = findViewById(R.id.alamatItem)
@@ -205,9 +214,61 @@ class ActivityItem : AppCompatActivity() {
         setJumlah()
 
         btnCheckout.setOnClickListener {
+            val id_pesanan = getRandomString(6)
+            val id_sanggar = intent.getStringExtra("id_sanggar").toString()
+            for (it in itemArray){
+                if(it.nama_item == "Barong")
+                    it.stok = countBarong.toString()
+                else if(it.nama_item == "Jathil")
+                    it.stok = countJathil.toString()
+                else if(it.nama_item == "Klonosewandono")
+                    it.stok = countKlonosewandono.toString()
+                else if(it.nama_item == "Bujang Ganong")
+                    it.stok = countBujang.toString()
+                else if(it.nama_item == "Warog")
+                    it.stok = countWarog.toString()
+                else if(it.nama_item == "Gendang")
+                    it.stok = countGendang.toString()
+                else if(it.nama_item == "Ketipung")
+                    it.stok = countKetipung.toString()
+                else if(it.nama_item == "Slompret")
+                    it.stok = countSlompret.toString()
+                else if(it.nama_item == "Kenong")
+                    it.stok = countKenong.toString()
+                else if(it.nama_item == "Gong")
+                    it.stok = countGong.toString()
+                else
+                    it.stok = countAngklung.toString()
+            }
+
+            val pesanan = Pesanan(
+                id_pesanan,
+                Sanggar(id_sanggar, sanggarItem.text.toString(), alamatItem.text.toString(), nohpItem.text.toString()),
+                itemArray
+            )
+
+            var semua_pesanan = arrayListOf<Pesanan>()
+            val sp_pesanan = SP.getString("pesanan", "").toString()
+            if(sp_pesanan != ""){
+                semua_pesanan = Gson().fromJson<ArrayList<Pesanan>>(sp_pesanan, object : TypeToken<ArrayList<Pesanan>>(){}.type)
+            }
+            semua_pesanan.add(pesanan)
+
+            val editor = SP.edit()
+            editor.putString("pesanan", Gson().toJson(semua_pesanan))
+            editor.apply()
+
             val intent = Intent(this, ActivityCheckout::class.java)
             startActivity(intent)
         }
+    }
+
+
+    fun getRandomString(length: Int) : String {
+        val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789"
+        return (1..length)
+            .map { charset.random() }
+            .joinToString("")
     }
 
     fun loadItem() {
@@ -272,6 +333,8 @@ class ActivityItem : AppCompatActivity() {
                         stokAngklungItem.text = Editable.Factory.getInstance().newEditable(allocation.stok)
                         hargaAngklungItem.text = Editable.Factory.getInstance().newEditable(allocation.harga)
                     }
+
+                    itemArray.add(allocation)
                 }
             }
             override fun onCancelled(databaseError: DatabaseError) {}

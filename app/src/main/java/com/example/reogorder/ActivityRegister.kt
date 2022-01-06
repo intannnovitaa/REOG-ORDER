@@ -81,12 +81,12 @@ class ActivityRegister : AppCompatActivity() {
 
         val ref = FirebaseDatabase.getInstance().getReference("user")
         val id  = ref.push().key.toString()
-        val model = User(id, textNama.text.toString(), textEmail.text.toString(), textPassword.text.toString(), textHp.text.toString(), textAlamat.text.toString())
+        val model = User(id, textNama.text.toString(), textEmail.text.toString(), textPassword.text.toString(), textHp.text.toString(), textAlamat.text.toString(), "user")
 
         val vm = this
         ref.child(id).setValue(model).addOnCompleteListener {
             val editor = SP.edit()
-            editor.putString("role", "user")
+            editor.putString("role", model.role)
             editor.putString("id", id)
             editor.putString("nama", textNama.text.toString())
             editor.putString("email", textEmail.text.toString())

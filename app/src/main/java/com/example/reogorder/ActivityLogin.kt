@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.reogorder.admin.ActivityUtamaAdmin
 import com.example.reogorder.model.User
 import com.example.reogorder.customer.ActivityUtama
 import com.google.firebase.database.DataSnapshot
@@ -73,7 +74,7 @@ class ActivityLogin : AppCompatActivity() {
                         val us = h.getValue(User::class.java)
                         if(us!!.password.equals(textPassword.text.toString())){
                             val editor = SP.edit()
-                            editor.putString("role", "user")
+                            editor.putString("role", us.role)
                             editor.putString("id", us.id)
                             editor.putString("nama", us.nama)
                             editor.putString("email", us.email)
@@ -82,7 +83,10 @@ class ActivityLogin : AppCompatActivity() {
                             editor.putString("alamat", us.alamat)
                             editor.apply()
 
-                            val intent = Intent(vm, ActivityUtama::class.java)
+                            var intent = Intent(vm, ActivityUtama::class.java)
+                            if(us.role == "admin"){
+                                intent = Intent(vm, ActivityUtamaAdmin::class.java)
+                            }
                             startActivity(intent)
                             finish()
                         }
