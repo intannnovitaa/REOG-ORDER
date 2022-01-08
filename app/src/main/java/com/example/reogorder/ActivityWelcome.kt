@@ -13,8 +13,7 @@ import com.example.reogorder.customer.ActivityUtama
 
 class ActivityWelcome : AppCompatActivity() {
     lateinit var alertDialog: AlertDialog.Builder
-    lateinit var btnGuest: Button
-    lateinit var btnLogin: Button
+    lateinit var btnLanjut: Button
     lateinit var SP: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,29 +22,8 @@ class ActivityWelcome : AppCompatActivity() {
 
         SP = getSharedPreferences("Login", Context.MODE_PRIVATE)
         alertDialog = AlertDialog.Builder(this)
-        btnGuest = findViewById(R.id.btnGuest)
-        btnLogin = findViewById(R.id.btnLogin)
-
-        btnGuest.setOnClickListener {
-            val editor = SP.edit()
-            editor.putString("role", "")
-            editor.putString("id", "")
-            editor.putString("nama", "Guest")
-            editor.putString("email", "")
-            editor.putString("password", "")
-            editor.putString("nohp", "")
-            editor.putString("alamat", "")
-            editor.apply()
-
-            val intent = Intent(this, ActivityUtama::class.java)
-            startActivity(intent)
-            finish()
-
-//            val intent = Intent(this, ActivityUtamaAdmin::class.java)
-//            startActivity(intent)
-//            finish()
-        }
-        btnLogin.setOnClickListener {
+        btnLanjut = findViewById(R.id.btnLanjut)
+        btnLanjut.setOnClickListener {
             val intent = Intent(this, ActivityLogin::class.java)
             startActivity(intent)
             finish()

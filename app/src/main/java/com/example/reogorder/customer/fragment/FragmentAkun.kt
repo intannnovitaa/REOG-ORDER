@@ -72,12 +72,7 @@ class FragmentAkun : Fragment() {
         nohp        = activity?.findViewById(R.id.nohpAkun)!!
         alamat      = activity?.findViewById(R.id.alamatAkun)!!
         btnSimpan   = activity?.findViewById(R.id.btnSimpan)!!
-        if(SP.getString("nama", "").equals("Guest")){
-            btnSimpan.visibility = View.INVISIBLE
-        }
-        else{
-            btnSimpan.visibility = View.VISIBLE
-        }
+
         nama.setText(SP.getString("nama", ""))
         email.setText(SP.getString("email", ""))
         password.setText(SP.getString("password", ""))

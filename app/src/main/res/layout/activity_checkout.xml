@@ -14,4 +14,701 @@
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         app:title="Checkout" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/toolbarCheckout"
+        android:background="@drawable/dec_gradasi"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarCheckout"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="20dp"
+        app:cardCornerRadius="5dp">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:scrollbars="none">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Identitas Pemesan"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/ic_orang" />
+
+                    <TextView
+                        android:id="@+id/namaCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/ic_telp" />
+
+                    <TextView
+                        android:id="@+id/nohpCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorGray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:text="Detail Sanggar"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/nav_beranda" />
+
+                    <TextView
+                        android:id="@+id/namaSanggarCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/ic_alamat" />
+
+                    <TextView
+                        android:id="@+id/alamatSanggarCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15dp"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorGray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:text="Detail Pesanan"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/ic_waktu" />
+
+                    <TextView
+                        android:id="@+id/waktuCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/white"
+                        android:gravity="center_vertical"
+                        android:hint="Masukkan Waktu Pemesanan"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/ic_kalender" />
+
+                    <TextView
+                        android:id="@+id/tanggalCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/white"
+                        android:gravity="center_vertical"
+                        android:hint="Masukkan Tanggal Pemesanan"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/ic_alamat" />
+
+                    <EditText
+                        android:id="@+id/lokasiCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/white"
+                        android:gravity="center_vertical"
+                        android:hint="Masukkan Lokasi Pemesanan"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorGray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:text="Detail Barang"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahBarongCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaBarongCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_toLeftOf="@+id/hargaBarongCo"
+                        android:layout_toRightOf="@id/jumlahBarongCo"
+                        android:text="Barong"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/hargaBarongCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahJathilCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaJathilCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahJathilCo"
+                        android:layout_toLeftOf="@+id/hargaJathilCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Jathil"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaJathilCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahKlonosewandonoCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaKlonosewandonoCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahKlonosewandonoCo"
+                        android:layout_toLeftOf="@+id/hargaKlonosewandonoCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Klonosewandono"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaKlonosewandonoCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahBujangCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaBujangCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahBujangCo"
+                        android:layout_toLeftOf="@+id/hargaBujangCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Bujang Ganong"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaBujangCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahWarogCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaWarogCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahWarogCo"
+                        android:layout_toLeftOf="@+id/hargaWarogCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Warog"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaWarogCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahGendangCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaGendangCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahGendangCo"
+                        android:layout_toLeftOf="@+id/hargaGendangCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Gendang"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaGendangCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahKetipungCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaKetipungCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahKetipungCo"
+                        android:layout_toLeftOf="@+id/hargaKetipungCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Ketipung"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaKetipungCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahSlompretCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaSlompretCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahSlompretCo"
+                        android:layout_toLeftOf="@+id/hargaSlompretCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Slompret"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaSlompretCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahKenongCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaKenongCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahKenongCo"
+                        android:layout_toLeftOf="@+id/hargaKenongCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Kenong"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaKenongCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahGongCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaGongCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahGongCo"
+                        android:layout_toLeftOf="@+id/hargaGongCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Gong"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaGongCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/jumlahAngklungCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="2"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/namaAngklungCo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/jumlahAngklungCo"
+                        android:layout_toLeftOf="@+id/hargaAngklungCo"
+                        android:layout_marginHorizontal="10dp"
+                        android:text="Angklung"
+                        android:textColor="@color/colorGray"
+                        android:textSize="16dp"/>
+
+                    <TextView
+                        android:id="@+id/hargaAngklungCo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="2000000"
+                        android:textColor="@android:color/black"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorGray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="10dp"
+                    android:text="Total Biaya"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/totalBiayaCo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="15dp"
+                    android:textStyle="bold"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_marginVertical="10dp"
+                    android:background="@color/colorGray" />
+
+                <Button
+                    android:id="@+id/btnCheckout"
+                    android:layout_width="165dp"
+                    android:layout_height="55dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/box_button"
+                    android:backgroundTint="@color/colorAccent"
+                    android:text="PESAN"
+                    android:textColor="@android:color/white"
+                    android:textSize="15dp" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>
