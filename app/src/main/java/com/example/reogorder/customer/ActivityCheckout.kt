@@ -8,25 +8,18 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.text.TextUtils
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.example.reogorder.R
 import com.example.reogorder.model.Detail
-import com.example.reogorder.model.Item
 import com.example.reogorder.model.Pesanan
-import com.example.reogorder.model.Sanggar
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.*
 
 class ActivityCheckout : AppCompatActivity() {
-    lateinit var databaseDetail: DatabaseReference
     lateinit var databasePesanan: DatabaseReference
     lateinit var SP: SharedPreferences
     lateinit var namaCo: TextView
@@ -73,7 +66,6 @@ class ActivityCheckout : AppCompatActivity() {
     lateinit var namaAngklungCo: TextView
     lateinit var hargaAngklungCo: TextView
 
-    var id_detail = ""
     var hasilBarong = 0
     var hasilJathil = 0
     var hasilKlonosewandono = 0
@@ -86,11 +78,22 @@ class ActivityCheckout : AppCompatActivity() {
     var hasilGong = 0
     var hasilAngklung = 0
 
+    lateinit var layoutBarongCo: RelativeLayout
+    lateinit var layoutJathilCo: RelativeLayout
+    lateinit var layoutKlonosewandonoCo: RelativeLayout
+    lateinit var layoutBujangCo: RelativeLayout
+    lateinit var layoutWarogCo: RelativeLayout
+    lateinit var layoutGendangCo: RelativeLayout
+    lateinit var layoutKetipungCo: RelativeLayout
+    lateinit var layoutSlompretCo: RelativeLayout
+    lateinit var layoutKenongCo: RelativeLayout
+    lateinit var layoutGongCo: RelativeLayout
+    lateinit var layoutAngklungCo: RelativeLayout
+
     @SuppressLint("NewApi")
     var formateDate = SimpleDateFormat("dd MMM YYYY")
     val date = Calendar.getInstance()
     var formateTime = SimpleDateFormat("hh:mm aa")
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -140,6 +143,18 @@ class ActivityCheckout : AppCompatActivity() {
         namaAngklungCo = findViewById(R.id.namaAngklungCo)
         hargaAngklungCo = findViewById(R.id.hargaAngklungCo)
 
+        layoutBarongCo = findViewById(R.id.layoutBarongCo)
+        layoutJathilCo = findViewById(R.id.layoutJathilCo)
+        layoutKlonosewandonoCo = findViewById(R.id.layoutKlonosewandonoCo)
+        layoutBujangCo = findViewById(R.id.layoutBujangCo)
+        layoutWarogCo = findViewById(R.id.layoutWarogCo)
+        layoutGendangCo = findViewById(R.id.layoutGendangCo)
+        layoutKetipungCo = findViewById(R.id.layoutKetipungCo)
+        layoutSlompretCo = findViewById(R.id.layoutSlompretCo)
+        layoutKenongCo = findViewById(R.id.layoutKenongCo)
+        layoutGongCo = findViewById(R.id.layoutGongCo)
+        layoutAngklungCo = findViewById(R.id.layoutAngklungCo)
+
         loadData()
 
         waktuCo.setOnClickListener {
@@ -166,8 +181,8 @@ class ActivityCheckout : AppCompatActivity() {
         }
 
         btnCheckout.setOnClickListener {
-//            addDetail()
             if(addPesanan()) {
+                Toast.makeText(this, "Pesanan dibuat",Toast.LENGTH_LONG).show()
                 val intent = Intent(this, ActivityUtama::class.java)
                 intent.putExtra("pesanan", "true")
                 startActivity(intent)
@@ -227,59 +242,37 @@ class ActivityCheckout : AppCompatActivity() {
         jumlahAngklungCo.text = intent.getStringExtra("jumlahAngklung").toString()
 
         if(intent.getStringExtra("jumlahBarong").toString().toInt() == 0) {
-            namaBarongCo.visibility = View.GONE
-            hargaBarongCo.visibility = View.GONE
-            jumlahBarongCo.visibility = View.GONE
+            layoutBarongCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahJathil").toString().toInt() == 0) {
-            namaJathilCo.visibility = View.GONE
-            hargaJathilCo.visibility = View.GONE
-            jumlahJathilCo.visibility = View.GONE
+            layoutJathilCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahKlonosewandono").toString().toInt() == 0) {
-            namaKlonosewandonoCo.visibility = View.GONE
-            hargaKlonosewandonoCo.visibility = View.GONE
-            jumlahKlonosewandonoCo.visibility = View.GONE
+            layoutKlonosewandonoCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahBujang").toString().toInt() == 0) {
-            namaBujangCo.visibility = View.GONE
-            hargaBujangCo.visibility = View.GONE
-            jumlahBujangCo.visibility = View.GONE
+            layoutBujangCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahWarog").toString().toInt() == 0) {
-            namaWarogCo.visibility = View.GONE
-            hargaWarogCo.visibility = View.GONE
-            jumlahWarogCo.visibility = View.GONE
+            layoutWarogCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahGendang").toString().toInt() == 0) {
-            namaGendangCo.visibility = View.GONE
-            hargaGendangCo.visibility = View.GONE
-            jumlahGendangCo.visibility = View.GONE
+            layoutGendangCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahKetipung").toString().toInt() == 0) {
-            namaKetipungCo.visibility = View.GONE
-            hargaKetipungCo.visibility = View.GONE
-            jumlahKetipungCo.visibility = View.GONE
+            layoutKetipungCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahSlompret").toString().toInt() == 0) {
-            namaSlompretCo.visibility = View.GONE
-            hargaSlompretCo.visibility = View.GONE
-            jumlahSlompretCo.visibility = View.GONE
+            layoutSlompretCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahKenong").toString().toInt() == 0) {
-            namaKenongCo.visibility = View.GONE
-            hargaKenongCo.visibility = View.GONE
-            jumlahKenongCo.visibility = View.GONE
+            layoutKenongCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahGong").toString().toInt() == 0) {
-            namaGongCo.visibility = View.GONE
-            hargaGongCo.visibility = View.GONE
-            jumlahGongCo.visibility = View.GONE
+            layoutGongCo.visibility = View.GONE
         }
         if(intent.getStringExtra("jumlahAngklung").toString().toInt() == 0) {
-            namaAngklungCo.visibility = View.GONE
-            hargaAngklungCo.visibility = View.GONE
-            jumlahAngklungCo.visibility = View.GONE
+            layoutAngklungCo.visibility = View.GONE
         }
         hasilBarong = intent.getStringExtra("hargaBarong")!!.toInt() * intent.getStringExtra("jumlahBarong")!!.toInt()
         hasilJathil = intent.getStringExtra("hargaJathil")!!.toInt() * intent.getStringExtra("jumlahJathil")!!.toInt()
@@ -296,66 +289,6 @@ class ActivityCheckout : AppCompatActivity() {
         totalBiayaCo.text = (hasilBarong + hasilJathil + hasilKlonosewandono + hasilBujang + hasilWarog + hasilGendang +
                 hasilKetipung + hasilSlompret + hasilKenong + hasilGong + hasilAngklung).toString()
     }
-
-//    private fun addDetail(id_pesanan: String) {
-//        var item = arrayListOf<Detail>()
-//
-//        val idSanggar = intent.getStringExtra("idSanggar").toString()
-//        val idItemBarong = intent.getStringExtra("idBarong").toString().trim()
-//        val jumlahBarong = jumlahBarongCo.text.toString().trim()
-//        val idItemJathil = intent.getStringExtra("idJathil").toString().trim()
-//        val jumlahJathil = jumlahJathilCo.text.toString().trim()
-//        val idItemKlonosewandono = intent.getStringExtra("idKlonosewandono").toString().trim()
-//        val jumlahKlonosewandono = jumlahKlonosewandonoCo.text.toString().trim()
-//        val idItemBujang = intent.getStringExtra("idBujang").toString().trim()
-//        val jumlahBujang = jumlahBujangCo.text.toString().trim()
-//        val idItemWarog = intent.getStringExtra("idWarog").toString().trim()
-//        val jumlahWarog = jumlahWarogCo.text.toString().trim()
-//        val idItemGendang = intent.getStringExtra("idGendang").toString().trim()
-//        val jumlahGendang = jumlahGendangCo.text.toString().trim()
-//        val idItemKetipung = intent.getStringExtra("idKetipung").toString().trim()
-//        val jumlahKetipung = jumlahKetipungCo.text.toString().trim()
-//        val idItemSlompret = intent.getStringExtra("idSlompret").toString().trim()
-//        val jumlahSlompret = jumlahSlompretCo.text.toString().trim()
-//        val idItemKenong = intent.getStringExtra("idKenong").toString().trim()
-//        val jumlahKenong = jumlahKenongCo.text.toString().trim()
-//        val idItemGong = intent.getStringExtra("idGong").toString().trim()
-//        val jumlahGong = jumlahGongCo.text.toString().trim()
-//        val idItemAngklung = intent.getStringExtra("idAngklung").toString().trim()
-//        val jumlahAngklung = jumlahAngklungCo.text.toString().trim()
-//
-//        if(jumlahBarong.toInt() > 0)
-//            item.add(Detail(idItemBarong, jumlahBarong))
-//        if(jumlahJathil.toInt() > 0)
-//            item.add(Detail(idItemJathil, jumlahJathil))
-//        if(jumlahKlonosewandono.toInt() > 0)
-//            item.add(Detail(idItemKlonosewandono, jumlahKlonosewandono))
-//        if(jumlahBujang.toInt() > 0)
-//            item.add(Detail(idItemBujang, jumlahBujang))
-//        if(jumlahWarog.toInt() > 0)
-//            item.add(Detail(idItemWarog, jumlahWarog))
-//        if(jumlahGendang.toInt() > 0)
-//            item.add(Detail(idItemGendang, jumlahGendang))
-//        if(jumlahKetipung.toInt() > 0)
-//            item.add(Detail(idItemKetipung, jumlahKetipung))
-//        if(jumlahSlompret.toInt() > 0)
-//            item.add(Detail(idItemSlompret, jumlahSlompret))
-//        if(jumlahKenong.toInt() > 0)
-//            item.add(Detail(idItemKenong, jumlahKenong))
-//        if(jumlahGong.toInt() > 0)
-//            item.add(Detail(idItemGong, jumlahGong))
-//        if(jumlahAngklung.toInt() > 0)
-//            item.add(Detail(idItemAngklung, jumlahAngklung))
-//
-//        databaseDetail = FirebaseDatabase.getInstance().getReference("detail")
-//        id_detail = databaseDetail.push().key.toString()
-//
-//        val addDetail = Detail(id_detail, id_pesanan, idSanggar, idItemBarong, idItemJathil, idItemKlonosewandono, idItemBujang,
-//            idItemWarog, idItemGendang, idItemKetipung, idItemSlompret, idItemKenong, idItemGong, idItemAngklung,
-//            jumlahBarong, jumlahJathil, jumlahKlonosewandono, jumlahBujang, jumlahWarog, jumlahGendang,
-//            jumlahKetipung, jumlahSlompret, jumlahKenong, jumlahGong, jumlahAngklung)
-//        databaseDetail.child(id_detail).setValue(addDetail)
-//    }
 
     private fun addPesanan(): Boolean {
         SP = applicationContext.getSharedPreferences("Login", Context.MODE_PRIVATE)
@@ -421,12 +354,11 @@ class ActivityCheckout : AppCompatActivity() {
             idPesanan = intent.getStringExtra("idPesanan").toString()
 
         if(!TextUtils.isEmpty(waktu) && !TextUtils.isEmpty(tanggal) && !TextUtils.isEmpty(lokasi)) {
-            val addPesanan = Pesanan(idPesanan, idSanggar, item, id, waktu, tanggal, lokasi, total, status)
+            val addPesanan = Pesanan(idPesanan, idSanggar, item, id, waktu, tanggal, lokasi, total, status, (id+'|'+status))
             databasePesanan.child(idPesanan).setValue(addPesanan)
-
             return true
-        }
-        else
+        } else {
             return false
+        }
     }
 }

@@ -23,14 +23,12 @@ import com.google.firebase.database.FirebaseDatabase
 class FragmentAkun : Fragment() {
     lateinit var alertDialog: AlertDialog.Builder
     lateinit var SP: SharedPreferences
-
     lateinit var nama: EditText
     lateinit var email: EditText
     lateinit var password: EditText
     lateinit var nohp: EditText
     lateinit var alamat: EditText
     lateinit var btnSimpan: Button
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_akun, container, false)
@@ -42,7 +40,6 @@ class FragmentAkun : Fragment() {
         setHasOptionsMenu(true)
         val actionBar = requireActivity().findViewById(R.id.toolbarAkun) as Toolbar
         (activity as AppCompatActivity).setSupportActionBar(actionBar)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -64,8 +61,8 @@ class FragmentAkun : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        SP = activity?.applicationContext!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
 
+        SP = activity?.applicationContext!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
         nama        = activity?.findViewById(R.id.namaAkun)!!
         email       = activity?.findViewById(R.id.emailAkun)!!
         password    = activity?.findViewById(R.id.passwordAkun)!!
@@ -79,7 +76,6 @@ class FragmentAkun : Fragment() {
         nohp.setText(SP.getString("nohp", ""))
         alamat.setText(SP.getString("alamat", ""))
 
-        // logout action
         alertDialog = AlertDialog.Builder(context)
         val logout = activity?.findViewById<Button>(R.id.btnLogout)
         logout!!.setOnClickListener {
@@ -102,7 +98,6 @@ class FragmentAkun : Fragment() {
                         startActivity(intent)
                     }
                 })
-
                 .setNegativeButton("TIDAK", object: DialogInterface.OnClickListener{
                     override fun onClick(dialog: DialogInterface?, id: Int) {
                         dialog?.cancel()
@@ -110,7 +105,6 @@ class FragmentAkun : Fragment() {
                 }).create().show()
         }
 
-        // save action
         btnSimpan.setOnClickListener {
             alertDialog.setTitle("Simpan data")
             alertDialog.setMessage("Yakin mengubah data anda ?")
@@ -119,7 +113,6 @@ class FragmentAkun : Fragment() {
                     override fun onClick(dialog: DialogInterface?, id: Int) {
                         btnSimpan.isClickable = true
                         btnSimpan.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
-
                         val user_id = SP.getString("id", "").toString()
                         val model = User(
                             user_id,
@@ -130,7 +123,6 @@ class FragmentAkun : Fragment() {
                             alamat.text.toString(),
                             SP.getString("role", "").toString()
                         )
-
                         val ref = FirebaseDatabase.getInstance().getReference("user")
                         ref.child(user_id).setValue(model).addOnCompleteListener{
                             btnSimpan.isClickable = true
@@ -150,7 +142,6 @@ class FragmentAkun : Fragment() {
                         }
                     }
                 })
-
                 .setNegativeButton("TIDAK", object: DialogInterface.OnClickListener{
                     override fun onClick(dialog: DialogInterface?, id: Int) {
                         dialog?.cancel()

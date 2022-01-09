@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -37,6 +36,7 @@ class FragmentBeranda : Fragment() {
 
     override fun onStart() {
         super.onStart()
+
         SP = activity?.applicationContext!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
         val txtName = activity?.findViewById<TextView>(R.id.txtName)
         txtName!!.text = SP.getString("nama", "")
@@ -49,7 +49,7 @@ class FragmentBeranda : Fragment() {
             query
         ) {
             override fun populateViewHolder(viewHolder:ViewholderBeranda, model:Sanggar, position:Int) {
-                viewHolder.setDetails(activity!!.applicationContext, model.id_sanggar, model.nama_sanggar, model.alamat_sanggar, model.nohp_sanggar)
+                viewHolder.setDetails(model.id_sanggar, model.nama_sanggar, model.alamat_sanggar, model.nohp_sanggar)
             }
             override fun onCreateViewHolder(parent:ViewGroup, viewType:Int):ViewholderBeranda {
                 val viewHolder = super.onCreateViewHolder(parent, viewType)

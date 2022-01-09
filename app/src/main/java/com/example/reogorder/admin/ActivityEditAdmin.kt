@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
-import android.util.Log
-import android.view.View
 import android.widget.*
 import com.example.reogorder.R
 import com.example.reogorder.model.Item
 import com.example.reogorder.model.Sanggar
 import com.google.firebase.database.*
-import com.google.firebase.storage.StorageReference
 
 class ActivityEditAdmin : AppCompatActivity() {
     lateinit var namaSanggar: EditText
@@ -103,6 +100,7 @@ class ActivityEditAdmin : AppCompatActivity() {
         stokAngklung = findViewById(R.id.stokAngklung)
 
         readSanggar()
+
         btnSimpan.setOnClickListener {
             if(intent.getStringExtra("id_sanggar").toString().isNotEmpty()) {
                 addSanggar()

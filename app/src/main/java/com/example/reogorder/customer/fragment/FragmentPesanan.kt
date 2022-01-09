@@ -1,33 +1,30 @@
 package com.example.reogorder.customer.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
+import android.view.*
+import android.widget.Button
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reogorder.R
 import com.example.reogorder.adapter.ViewholderPesanan
-import com.example.reogorder.admin.ActivityUtamaAdmin
-import com.example.reogorder.customer.ActivityUtama
+import com.example.reogorder.customer.ActivityDetail
 import com.example.reogorder.model.*
 import com.firebase.ui.database.FirebaseRecyclerAdapter
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.Query
 
 class FragmentPesanan : Fragment() {
     lateinit var mLayoutManager: LinearLayoutManager
     lateinit var mRecyclerView: RecyclerView
     lateinit var SP: SharedPreferences
+    lateinit var btnSelesai: Button
+    lateinit var btnDiproses: Button
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_pesanan, container, false)
@@ -42,11 +39,37 @@ class FragmentPesanan : Fragment() {
         mRecyclerView.layoutManager = mLayoutManager
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onStart() {
         super.onStart()
-        SP = activity?.applicationContext!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
 
-        val query = FirebaseDatabase.getInstance().getReference("pesanan").orderByChild("id").equalTo(SP.getString("id", ""))
+        btnDiproses = requireView().findViewById(R.id.btnDiproses)
+        btnSelesai  = requireView().findViewById(R.id.btnSelesai)
+
+        SP = activity?.applicationContext!!.getSharedPreferences("Login", Context.MODE_PRIVATE)
+        val query = FirebaseDatabase.getInstance().getReference("pesanan")
+            .orderByChild("idNstatus").equalTo(SP.getString("id", "")+"|Diproses")
+        loadFirebase(query)
+        btnDiproses.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+        btnSelesai.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+
+        btnDiproses.setOnClickListener {
+            val query = FirebaseDatabase.getInstance().getReference("pesanan")
+                .orderByChild("idNstatus").equalTo(SP.getString("id", "")+"|Diproses")
+            loadFirebase(query)
+            btnDiproses.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+            btnSelesai.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+        }
+        btnSelesai.setOnClickListener {
+            val query = FirebaseDatabase.getInstance().getReference("pesanan")
+                .orderByChild("idNstatus").equalTo(SP.getString("id", "")+"|Selesai")
+            loadFirebase(query)
+            btnSelesai.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+            btnDiproses.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+        }
+    }
+
+    fun loadFirebase(query: Query){
         val firebaseRecyclerAdapter = object: FirebaseRecyclerAdapter<Pesanan, ViewholderPesanan>(
             Pesanan::class.java,
             R.layout.card_pesanan,
@@ -54,12 +77,16 @@ class FragmentPesanan : Fragment() {
             query
         ) {
             override fun populateViewHolder(viewHolder: ViewholderPesanan, model: Pesanan, position:Int) {
-                viewHolder.setDetails(activity!!.applicationContext, model)
+                viewHolder.setDetails(model)
             }
             override fun onCreateViewHolder(parent:ViewGroup, viewType:Int): ViewholderPesanan {
                 val viewHolder = super.onCreateViewHolder(parent, viewType)
                 viewHolder.setOnClickListener(object: ViewholderPesanan.ClickListener {
-                    override fun onItemClick(view:View, position:Int) {}
+                    override fun onItemClick(view:View, position:Int) {
+                        val intent = Intent(view.context, ActivityDetail::class.java)
+                        intent.putExtra("id_pesanan", viewHolder.id_pesanan)
+                        startActivity(intent)
+                    }
                     override fun onItemLongClick(view:View, position:Int) {}
                 })
                 return viewHolder
@@ -67,5 +94,4 @@ class FragmentPesanan : Fragment() {
         }
         mRecyclerView.adapter = firebaseRecyclerAdapter
     }
-
 }

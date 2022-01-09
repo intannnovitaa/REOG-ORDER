@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import com.example.reogorder.admin.ActivityUtamaAdmin
-import com.example.reogorder.customer.ActivityUtama
 
 class ActivityWelcome : AppCompatActivity() {
     lateinit var alertDialog: AlertDialog.Builder

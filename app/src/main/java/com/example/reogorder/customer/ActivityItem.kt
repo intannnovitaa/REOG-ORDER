@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -16,8 +15,6 @@ import com.example.reogorder.model.Sanggar
 import com.example.reogorder.R
 import com.example.reogorder.model.Pesanan
 import com.google.firebase.database.*
-//import com.google.gson.Gson
-//import com.google.gson.reflect.TypeToken
 
 class ActivityItem : AppCompatActivity() {
     lateinit var databaseSanggar: DatabaseReference
@@ -123,14 +120,13 @@ class ActivityItem : AppCompatActivity() {
     var tglPesanan = ""
     var wktPesanan = ""
     var lokPesanan = ""
-
     lateinit var SP: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item)
-        SP = getSharedPreferences("Login", Context.MODE_PRIVATE)
 
+        SP = getSharedPreferences("Login", Context.MODE_PRIVATE)
         sanggarItem = findViewById(R.id.sanggarItem)
         alamatItem = findViewById(R.id.alamatItem)
         nohpItem = findViewById(R.id.nohpItem)
@@ -142,70 +138,60 @@ class ActivityItem : AppCompatActivity() {
         jumlahBarongItem = findViewById(R.id.jumlahBarongItem)
         tambahBarongItem = findViewById(R.id.tambahBarongItem)
         kurangBarongItem = findViewById(R.id.kurangBarongItem)
-
         namaJathilItem = findViewById(R.id.namaJathilItem)
         stokJathilItem = findViewById(R.id.stokJathilItem)
         hargaJathilItem = findViewById(R.id.hargaJathilItem)
         jumlahJathilItem = findViewById(R.id.jumlahJathilItem)
         tambahJathilItem = findViewById(R.id.tambahJathilItem)
         kurangJathilItem = findViewById(R.id.kurangJathilItem)
-
         namaKlonosewandonoItem = findViewById(R.id.namaKlonosewandonoItem)
         stokKlonosewandonoItem = findViewById(R.id.stokKlonosewandonoItem)
         hargaKlonosewandonoItem = findViewById(R.id.hargaKlonosewandonoItem)
         jumlahKlonosewandonoItem = findViewById(R.id.jumlahKlonosewandonoItem)
         tambahKlonosewandonoItem = findViewById(R.id.tambahKlonosewandonoItem)
         kurangKlonosewandonoItem = findViewById(R.id.kurangKlonosewandonoItem)
-
         namaBujangItem = findViewById(R.id.namaBujangItem)
         stokBujangItem = findViewById(R.id.stokBujangItem)
         hargaBujangItem = findViewById(R.id.hargaBujangItem)
         jumlahBujangItem = findViewById(R.id.jumlahBujangItem)
         tambahBujangItem = findViewById(R.id.tambahBujangItem)
         kurangBujangItem = findViewById(R.id.kurangBujangItem)
-
         namaWarogItem = findViewById(R.id.namaWarogItem)
         stokWarogItem = findViewById(R.id.stokWarogItem)
         hargaWarogItem = findViewById(R.id.hargaWarogItem)
         jumlahWarogItem = findViewById(R.id.jumlahWarogItem)
         tambahWarogItem = findViewById(R.id.tambahWarogItem)
         kurangWarogItem = findViewById(R.id.kurangWarogItem)
-
         namaGendangItem = findViewById(R.id.namaGendangItem)
         stokGendangItem = findViewById(R.id.stokGendangItem)
         hargaGendangItem = findViewById(R.id.hargaGendangItem)
         jumlahGendangItem = findViewById(R.id.jumlahGendangItem)
         tambahGendangItem = findViewById(R.id.tambahGendangItem)
         kurangGendangItem = findViewById(R.id.kurangGendangItem)
-
         namaKetipungItem = findViewById(R.id.namaKetipungItem)
         stokKetipungItem = findViewById(R.id.stokKetipungItem)
         hargaKetipungItem = findViewById(R.id.hargaKetipungItem)
         jumlahKetipungItem = findViewById(R.id.jumlahKetipungItem)
         tambahKetipungItem = findViewById(R.id.tambahKetipungItem)
         kurangKetipungItem = findViewById(R.id.kurangKetipungItem)
-
         namaSlompretItem = findViewById(R.id.namaSlompretItem)
         stokSlompretItem = findViewById(R.id.stokSlompretItem)
         hargaSlompretItem = findViewById(R.id.hargaSlompretItem)
         jumlahSlompretItem = findViewById(R.id.jumlahSlompretItem)
         tambahSlompretItem = findViewById(R.id.tambahSlompretItem)
         kurangSlompretItem = findViewById(R.id.kurangSlompretItem)
-
         namaKenongItem = findViewById(R.id.namaKenongItem)
         stokKenongItem = findViewById(R.id.stokKenongItem)
         hargaKenongItem = findViewById(R.id.hargaKenongItem)
         jumlahKenongItem = findViewById(R.id.jumlahKenongItem)
         tambahKenongItem = findViewById(R.id.tambahKenongItem)
         kurangKenongItem = findViewById(R.id.kurangKenongItem)
-
         namaGongItem = findViewById(R.id.namaGongItem)
         stokGongItem = findViewById(R.id.stokGongItem)
         hargaGongItem = findViewById(R.id.hargaGongItem)
         jumlahGongItem = findViewById(R.id.jumlahGongItem)
         tambahGongItem = findViewById(R.id.tambahGongItem)
         kurangGongItem = findViewById(R.id.kurangGongItem)
-
         namaAngklungItem = findViewById(R.id.namaAngklungItem)
         stokAngklungItem = findViewById(R.id.stokAngklungItem)
         hargaAngklungItem = findViewById(R.id.hargaAngklungItem)
@@ -232,55 +218,6 @@ class ActivityItem : AppCompatActivity() {
         loadItem()
         setJumlah()
         checkOldData()
-
-//        btnCheckout.setOnClickListener {
-//            val id_pesanan = getRandomString(6)
-//            val id_sanggar = intent.getStringExtra("id_sanggar").toString()
-//            for (it in itemArray){
-//                if(it.nama_item == "Barong")
-//                    it.stok = countBarong.toString()
-//                else if(it.nama_item == "Jathil")
-//                    it.stok = countJathil.toString()
-//                else if(it.nama_item == "Klonosewandono")
-//                    it.stok = countKlonosewandono.toString()
-//                else if(it.nama_item == "Bujang Ganong")
-//                    it.stok = countBujang.toString()
-//                else if(it.nama_item == "Warog")
-//                    it.stok = countWarog.toString()
-//                else if(it.nama_item == "Gendang")
-//                    it.stok = countGendang.toString()
-//                else if(it.nama_item == "Ketipung")
-//                    it.stok = countKetipung.toString()
-//                else if(it.nama_item == "Slompret")
-//                    it.stok = countSlompret.toString()
-//                else if(it.nama_item == "Kenong")
-//                    it.stok = countKenong.toString()
-//                else if(it.nama_item == "Gong")
-//                    it.stok = countGong.toString()
-//                else
-//                    it.stok = countAngklung.toString()
-//            }
-//
-//            val pesanan = Pesanan(
-//                id_pesanan,
-//                Sanggar(id_sanggar, sanggarItem.text.toString(), alamatItem.text.toString(), nohpItem.text.toString()),
-//                itemArray
-//            )
-//
-//            var semua_pesanan = arrayListOf<Pesanan>()
-//            val sp_pesanan = SP.getString("pesanan", "").toString()
-//            if(sp_pesanan != ""){
-//                semua_pesanan = Gson().fromJson<ArrayList<Pesanan>>(sp_pesanan, object : TypeToken<ArrayList<Pesanan>>(){}.type)
-//            }
-//            semua_pesanan.add(pesanan)
-//
-//            val editor = SP.edit()
-//            editor.putString("pesanan", Gson().toJson(semua_pesanan))
-//            editor.apply()
-//
-//            val intent = Intent(this, ActivityCheckout::class.java)
-//            startActivity(intent)
-//        }
 
         btnCheckout.setOnClickListener {
             val idBarongI = idBarong.trim()
@@ -389,14 +326,6 @@ class ActivityItem : AppCompatActivity() {
         }
     }
 
-
-//    fun getRandomString(length: Int) : String {
-//        val charset = "ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz0123456789"
-//        return (1..length)
-//            .map { charset.random() }
-//            .joinToString("")
-//    }
-
     fun loadItem() {
         databaseItem = FirebaseDatabase.getInstance().getReference("item")
         val queryItem = databaseItem.child(intent.getStringExtra("id_sanggar").toString())
@@ -470,8 +399,6 @@ class ActivityItem : AppCompatActivity() {
                         stokAngklungItem.text = allocation.stok
                         hargaAngklungItem.text = allocation.harga
                     }
-
-//                    itemArray.add(allocation)
                 }
             }
             override fun onCancelled(databaseError: DatabaseError) {}
@@ -643,8 +570,7 @@ class ActivityItem : AppCompatActivity() {
                     if(p0.exists()){
                         for (h in p0.children){
                             val value = h.getValue(Pesanan::class.java)
-//                            Log.d("olddata", value!!.status)
-                            if(value!!.id_sanggar.equals(intent.getStringExtra("id_sanggar").toString()) && value.status == "Diproses"){
+                            if(value!!.id_sanggar == intent.getStringExtra("id_sanggar").toString() && value.status == "Diproses"){
                                 idPesanan = value.id_pesanan
                                 tglPesanan = value.tanggal
                                 wktPesanan = value.waktu
@@ -658,7 +584,7 @@ class ActivityItem : AppCompatActivity() {
                                                     for (j in p1.children){
                                                         val vl = j.getValue(Item::class.java)
                                                         Log.d("olddata", vl!!.nama_item)
-                                                        if(vl!!.nama_item == "Barong"){
+                                                        if(vl.nama_item == "Barong"){
                                                             countBarong = i.jumlah.toInt()
                                                             jumlahBarongItem.setText(countBarong.toString())
                                                         }
@@ -705,9 +631,7 @@ class ActivityItem : AppCompatActivity() {
                                                     }
                                                 }
                                             }
-
                                             override fun onCancelled(p0: DatabaseError) { }
-
                                         })
                                 }
                             }
@@ -715,7 +639,6 @@ class ActivityItem : AppCompatActivity() {
                     }
                 }
                 override fun onCancelled(p0: DatabaseError) { }
-
             })
     }
 }

@@ -63,7 +63,7 @@ class FragmentBerandaAdmin : Fragment() {
             query
         ) {
             override fun populateViewHolder(viewHolder: ViewholderBeranda, model: Sanggar, position:Int) {
-                viewHolder.setDetails(activity!!.applicationContext, model.id_sanggar, model.nama_sanggar, model.alamat_sanggar, model.nohp_sanggar)
+                viewHolder.setDetails(model.id_sanggar, model.nama_sanggar, model.alamat_sanggar, model.nohp_sanggar)
             }
             override fun onCreateViewHolder(parent:ViewGroup, viewType:Int): ViewholderBeranda {
                 val viewHolder = super.onCreateViewHolder(parent, viewType)

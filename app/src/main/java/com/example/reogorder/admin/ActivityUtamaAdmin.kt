@@ -9,9 +9,6 @@ import com.example.reogorder.R
 import com.example.reogorder.admin.fragment.FragmentAkunAdmin
 import com.example.reogorder.admin.fragment.FragmentBerandaAdmin
 import com.example.reogorder.admin.fragment.FragmentPesananAdmin
-import com.example.reogorder.customer.fragment.FragmentAkun
-import com.example.reogorder.customer.fragment.FragmentBeranda
-import com.example.reogorder.customer.fragment.FragmentPesanan
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ActivityUtamaAdmin : AppCompatActivity() {
@@ -42,8 +39,13 @@ class ActivityUtamaAdmin : AppCompatActivity() {
 
         alertDialog = AlertDialog.Builder(this)
         bottomNav = findViewById(R.id.bottomNavAdmin)
+        if (intent.getStringExtra("pesanan").toString() == "true") {
+            replaceFragment(FragmentPesananAdmin())
+            bottomNav.selectedItemId = R.id.pesanan
+        } else {
+            replaceFragment(FragmentBerandaAdmin())
+        }
         bottomNav.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-        replaceFragment(FragmentBerandaAdmin())
     }
 
     private fun replaceFragment(fragment: Fragment) {

@@ -16,7 +16,6 @@ class ActivityLoading : AppCompatActivity() {
         setContentView(R.layout.activity_loading)
 
         SP = getSharedPreferences("Login", Context.MODE_PRIVATE)
-
         val backgrond = object : Thread(){
             override fun run() {
                 try {

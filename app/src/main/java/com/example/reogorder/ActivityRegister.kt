@@ -11,7 +11,10 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.reogorder.model.User
 import com.example.reogorder.customer.ActivityUtama
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class ActivityRegister : AppCompatActivity() {
     lateinit var btnRegister: Button
@@ -21,8 +24,8 @@ class ActivityRegister : AppCompatActivity() {
     lateinit var textHp: TextView
     lateinit var textPassword: TextView
     lateinit var textAlamat: TextView
-
     lateinit var SP: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -36,10 +39,19 @@ class ActivityRegister : AppCompatActivity() {
         textAlamat = findViewById(R.id.textAlamat)
         SP = getSharedPreferences("Login", Context.MODE_PRIVATE)
 
-
         btnRegister.setOnClickListener {
             if(validate()){
-                register()
+                FirebaseDatabase.getInstance().getReference("user").orderByChild("email").equalTo(textEmail.text.toString())
+                    .addListenerForSingleValueEvent( object : ValueEventListener {
+                        override fun onDataChange(p0: DataSnapshot) {
+                            if(p0.exists()) {
+                                Toast.makeText(this@ActivityRegister, "Email sudah terdaftar", Toast.LENGTH_SHORT).show()
+                            } else {
+                                register()
+                            }
+                        }
+                        override fun onCancelled(p0: DatabaseError) { }
+                    })
             }
         }
         textLogin.setOnClickListener {
@@ -70,7 +82,6 @@ class ActivityRegister : AppCompatActivity() {
             Toast.makeText(this, "Alamat tidak boleh kosong", Toast.LENGTH_SHORT).show()
             return false
         }
-
         return true
     }
 

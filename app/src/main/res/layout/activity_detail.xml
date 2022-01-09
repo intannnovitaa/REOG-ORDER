@@ -6,25 +6,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/img_background"
-    tools:context=".customer.ActivityCheckout">
+    tools:context=".customer.ActivityDetail">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarCheckout"
+        android:id="@+id/toolbarDetail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
-        app:title="Checkout" />
+        app:title="Detail Pesanan" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_below="@id/toolbarCheckout"
+        android:layout_below="@id/toolbarDetail"
         android:background="@drawable/dec_gradasi"/>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbarCheckout"
+        android:layout_below="@id/toolbarDetail"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="20dp"
         app:cardCornerRadius="5dp">
@@ -61,7 +61,7 @@
                         app:srcCompat="@drawable/ic_orang" />
 
                     <TextView
-                        android:id="@+id/namaCo"
+                        android:id="@+id/namaDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -83,7 +83,7 @@
                         app:srcCompat="@drawable/ic_telp" />
 
                     <TextView
-                        android:id="@+id/nohpCo"
+                        android:id="@+id/nohpDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -119,7 +119,7 @@
                         app:srcCompat="@drawable/nav_beranda" />
 
                     <TextView
-                        android:id="@+id/namaSanggarCo"
+                        android:id="@+id/namaSanggarDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -141,7 +141,7 @@
                         app:srcCompat="@drawable/ic_alamat" />
 
                     <TextView
-                        android:id="@+id/alamatSanggarCo"
+                        android:id="@+id/alamatSanggarDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
@@ -177,14 +177,13 @@
                         app:srcCompat="@drawable/ic_waktu" />
 
                     <TextView
-                        android:id="@+id/waktuCo"
+                        android:id="@+id/waktuDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:background="@android:color/white"
                         android:gravity="center_vertical"
-                        android:hint="Masukkan Waktu Pemesanan"
                         android:textColor="@color/colorGray"
                         android:textSize="15dp" />
                 </LinearLayout>
@@ -202,14 +201,13 @@
                         app:srcCompat="@drawable/ic_kalender" />
 
                     <TextView
-                        android:id="@+id/tanggalCo"
+                        android:id="@+id/tanggalDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:background="@android:color/white"
                         android:gravity="center_vertical"
-                        android:hint="Masukkan Tanggal Pemesanan"
                         android:textColor="@color/colorGray"
                         android:textSize="15dp" />
                 </LinearLayout>
@@ -226,15 +224,14 @@
                         android:layout_marginLeft="10dp"
                         app:srcCompat="@drawable/ic_alamat" />
 
-                    <EditText
-                        android:id="@+id/lokasiCo"
+                    <TextView
+                        android:id="@+id/lokasiDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
                         android:background="@android:color/white"
                         android:gravity="center_vertical"
-                        android:hint="Masukkan Lokasi Pemesanan"
                         android:textColor="@color/colorGray"
                         android:textSize="15dp" />
                 </LinearLayout>
@@ -255,13 +252,14 @@
                     android:textStyle="bold" />
 
                 <RelativeLayout
-                    android:id="@+id/layoutBarongCo"
+                    android:id="@+id/layoutBarongDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahBarongCo"
+                        android:id="@+id/jumlahBarongDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -271,36 +269,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaBarongCo"
+                        android:id="@+id/namaBarongDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaBarongCo"
-                        android:layout_toRightOf="@id/jumlahBarongCo"
+                        android:layout_toLeftOf="@+id/hargaBarongDetail"
+                        android:layout_toRightOf="@id/jumlahBarongDetail"
                         android:text="Barong"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaBarongCo"
+                        android:id="@+id/hargaBarongDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutJathilCo"
+                    android:id="@+id/layoutJathilDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahJathilCo"
+                        android:id="@+id/jumlahJathilDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -310,36 +309,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaJathilCo"
+                        android:id="@+id/namaJathilDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaJathilCo"
-                        android:layout_toRightOf="@id/jumlahJathilCo"
+                        android:layout_toLeftOf="@+id/hargaJathilDetail"
+                        android:layout_toRightOf="@id/jumlahJathilDetail"
                         android:text="Jathil"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaJathilCo"
+                        android:id="@+id/hargaJathilDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutKlonosewandonoCo"
+                    android:id="@+id/layoutKlonosewandonoDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahKlonosewandonoCo"
+                        android:id="@+id/jumlahKlonosewandonoDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -349,36 +349,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaKlonosewandonoCo"
+                        android:id="@+id/namaKlonosewandonoDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaKlonosewandonoCo"
-                        android:layout_toRightOf="@id/jumlahKlonosewandonoCo"
+                        android:layout_toLeftOf="@+id/hargaKlonosewandonoDetail"
+                        android:layout_toRightOf="@id/jumlahKlonosewandonoDetail"
                         android:text="Klonosewandono"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaKlonosewandonoCo"
+                        android:id="@+id/hargaKlonosewandonoDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutBujangCo"
+                    android:id="@+id/layoutBujangDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahBujangCo"
+                        android:id="@+id/jumlahBujangDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -388,36 +389,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaBujangCo"
+                        android:id="@+id/namaBujangDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaBujangCo"
-                        android:layout_toRightOf="@id/jumlahBujangCo"
+                        android:layout_toLeftOf="@+id/hargaBujangDetail"
+                        android:layout_toRightOf="@id/jumlahBujangDetail"
                         android:text="Bujang Ganong"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaBujangCo"
+                        android:id="@+id/hargaBujangDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutWarogCo"
+                    android:id="@+id/layoutWarogDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahWarogCo"
+                        android:id="@+id/jumlahWarogDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -427,36 +429,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaWarogCo"
+                        android:id="@+id/namaWarogDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaWarogCo"
-                        android:layout_toRightOf="@id/jumlahWarogCo"
+                        android:layout_toLeftOf="@+id/hargaWarogDetail"
+                        android:layout_toRightOf="@id/jumlahWarogDetail"
                         android:text="Warog"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaWarogCo"
+                        android:id="@+id/hargaWarogDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutGendangCo"
+                    android:id="@+id/layoutGendangDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahGendangCo"
+                        android:id="@+id/jumlahGendangDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -466,36 +469,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaGendangCo"
+                        android:id="@+id/namaGendangDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaGendangCo"
-                        android:layout_toRightOf="@id/jumlahGendangCo"
+                        android:layout_toLeftOf="@+id/hargaGendangDetail"
+                        android:layout_toRightOf="@id/jumlahGendangDetail"
                         android:text="Gendang"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaGendangCo"
+                        android:id="@+id/hargaGendangDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutKetipungCo"
+                    android:id="@+id/layoutKetipungDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahKetipungCo"
+                        android:id="@+id/jumlahKetipungDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -505,36 +509,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaKetipungCo"
+                        android:id="@+id/namaKetipungDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaKetipungCo"
-                        android:layout_toRightOf="@id/jumlahKetipungCo"
+                        android:layout_toLeftOf="@+id/hargaKetipungDetail"
+                        android:layout_toRightOf="@id/jumlahKetipungDetail"
                         android:text="Ketipung"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaKetipungCo"
+                        android:id="@+id/hargaKetipungDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutSlompretCo"
+                    android:id="@+id/layoutSlompretDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahSlompretCo"
+                        android:id="@+id/jumlahSlompretDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -544,36 +549,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaSlompretCo"
+                        android:id="@+id/namaSlompretDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaSlompretCo"
-                        android:layout_toRightOf="@id/jumlahSlompretCo"
+                        android:layout_toLeftOf="@+id/hargaSlompretDetail"
+                        android:layout_toRightOf="@id/jumlahSlompretDetail"
                         android:text="Slompret"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaSlompretCo"
+                        android:id="@+id/hargaSlompretDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutKenongCo"
+                    android:id="@+id/layoutKenongDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahKenongCo"
+                        android:id="@+id/jumlahKenongDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -583,36 +589,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaKenongCo"
+                        android:id="@+id/namaKenongDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaKenongCo"
-                        android:layout_toRightOf="@id/jumlahKenongCo"
+                        android:layout_toLeftOf="@+id/hargaKenongDetail"
+                        android:layout_toRightOf="@id/jumlahKenongDetail"
                         android:text="Kenong"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaKenongCo"
+                        android:id="@+id/hargaKenongDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutGongCo"
+                    android:id="@+id/layoutGongDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahGongCo"
+                        android:id="@+id/jumlahGongDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -622,36 +629,37 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaGongCo"
+                        android:id="@+id/namaGongDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaGongCo"
-                        android:layout_toRightOf="@id/jumlahGongCo"
+                        android:layout_toLeftOf="@+id/hargaGongDetail"
+                        android:layout_toRightOf="@id/jumlahGongDetail"
                         android:text="Gong"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaGongCo"
+                        android:id="@+id/hargaGongDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/layoutAngklungCo"
+                    android:id="@+id/layoutAngklungDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:visibility="gone"
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/jumlahAngklungCo"
+                        android:id="@+id/jumlahAngklungDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -661,22 +669,22 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/namaAngklungCo"
+                        android:id="@+id/namaAngklungDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="10dp"
-                        android:layout_toLeftOf="@+id/hargaAngklungCo"
-                        android:layout_toRightOf="@id/jumlahAngklungCo"
+                        android:layout_toLeftOf="@+id/hargaAngklungDetail"
+                        android:layout_toRightOf="@id/jumlahAngklungDetail"
                         android:text="Angklung"
                         android:textColor="@color/colorGray"
                         android:textSize="16dp" />
 
                     <TextView
-                        android:id="@+id/hargaAngklungCo"
+                        android:id="@+id/hargaAngklungDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:text="2000000"
+                        android:text="0"
                         android:textColor="@android:color/black"
                         android:textSize="16dp"
                         android:textStyle="bold" />
@@ -698,7 +706,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/totalBiayaCo"
+                    android:id="@+id/totalBiayaDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -714,7 +722,7 @@
                     android:background="@color/colorGray" />
 
                 <Button
-                    android:id="@+id/btnCheckout"
+                    android:id="@+id/btnSelesai"
                     android:layout_width="165dp"
                     android:layout_height="55dp"
                     android:layout_gravity="center_horizontal"
@@ -722,8 +730,9 @@
                     android:layout_marginBottom="20dp"
                     android:background="@drawable/box_button"
                     android:backgroundTint="@color/colorAccent"
-                    android:text="PESAN"
+                    android:text="SELESAI"
                     android:textColor="@android:color/white"
+                    android:visibility="gone"
                     android:textSize="15dp" />
             </LinearLayout>
         </ScrollView>

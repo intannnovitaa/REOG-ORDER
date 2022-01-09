@@ -14,4 +14,37 @@
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         app:title="Pesanan" />
+
+    <LinearLayout
+        android:id="@+id/layoutPesananAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/toolbarPesananAdmin">
+        <Button
+            android:id="@+id/btnDiprosesAdmin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="Diproses"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"/>
+
+        <Button
+            android:id="@+id/btnSelesaiAdmin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="SELESAI"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"/>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerPesananAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/layoutPesananAdmin" />
 </RelativeLayout>

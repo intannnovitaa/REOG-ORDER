@@ -23,7 +23,6 @@ class ActivityLogin : AppCompatActivity() {
     lateinit var textRegister: TextView
     lateinit var textEmail: EditText
     lateinit var textPassword: EditText
-
     lateinit var SP: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,7 +33,6 @@ class ActivityLogin : AppCompatActivity() {
         textRegister    = findViewById(R.id.textRegister)
         textEmail       = findViewById(R.id.textEmail)
         textPassword    = findViewById(R.id.textPassword)
-
         SP = getSharedPreferences("Login", Context.MODE_PRIVATE)
 
         btnLogin.setOnClickListener {
@@ -49,15 +47,14 @@ class ActivityLogin : AppCompatActivity() {
     }
 
     private fun validate(): Boolean{
-        if(textEmail.text.toString().equals("")){
+        if(textEmail.text.toString() == ""){
             Toast.makeText(this, "Email tidak boleh kosong", Toast.LENGTH_SHORT).show()
             return false
         }
-        if(textPassword.text.toString().equals("")){
+        if(textPassword.text.toString() == ""){
             Toast.makeText(this, "Password tidak boleh kosong", Toast.LENGTH_SHORT).show()
             return false
         }
-
         return true
     }
 
@@ -66,7 +63,8 @@ class ActivityLogin : AppCompatActivity() {
         btnLogin.isClickable = false
         btnLogin.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
 
-        FirebaseDatabase.getInstance().getReference("user").orderByChild("email").equalTo(textEmail.text.toString()).addListenerForSingleValueEvent(object : ValueEventListener{
+        FirebaseDatabase.getInstance().getReference("user").orderByChild("email")
+            .equalTo(textEmail.text.toString()).addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {}
             override fun onDataChange(p0: DataSnapshot) {
                 if (p0.exists()){

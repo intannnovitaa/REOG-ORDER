@@ -1,13 +1,14 @@
 package com.example.reogorder.adapter
 
 import android.content.Context
+import android.content.SharedPreferences
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reogorder.R
-import com.example.reogorder.model.Detail
 import com.example.reogorder.model.Pesanan
 import com.example.reogorder.model.Sanggar
+import com.example.reogorder.model.User
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -16,6 +17,8 @@ import com.google.firebase.database.ValueEventListener
 class ViewholderPesanan(itemView: View): RecyclerView.ViewHolder(itemView) {
     internal var mView: View = itemView
     private var mClickListener: ClickListener? = null
+    val SP: SharedPreferences = itemView.context.getSharedPreferences("Login", Context.MODE_PRIVATE)
+    var id_pesanan = ""
 
     init{
         itemView.setOnClickListener { view -> mClickListener!!.onItemClick(view, adapterPosition) }
@@ -25,7 +28,7 @@ class ViewholderPesanan(itemView: View): RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    fun setDetails(ctx: Context, pesanan: Pesanan) {
+    fun setDetails(pesanan: Pesanan) {
         val namaSanggar = mView.findViewById(R.id.sanggarPesanan) as TextView
         val tanggalPesanan = mView.findViewById(R.id.tanggalPesanan) as TextView
         val waktuPesanan = mView.findViewById(R.id.waktuPesanan) as TextView
@@ -39,7 +42,10 @@ class ViewholderPesanan(itemView: View): RecyclerView.ViewHolder(itemView) {
                 if (p0.exists()){
                     for (h in p0.children) {
                         val us = h.getValue(Sanggar::class.java)
-                        namaSanggar.text = us!!.nama_sanggar
+                        if(SP.getString("role", "").equals("admin"))
+                            namaSanggar.text = (us!!.nama_sanggar + " | " + pesanan.status)
+                        else
+                            namaSanggar.text = us!!.nama_sanggar
                     }
                 }
             }
@@ -48,6 +54,14 @@ class ViewholderPesanan(itemView: View): RecyclerView.ViewHolder(itemView) {
         waktuPesanan.text = pesanan.waktu
         alamatPesanan.text = pesanan.lokasi
         bayarPesanan.text = pesanan.total_bayar
+        this.id_pesanan = pesanan.id_pesanan
+
+        if(SP.getString("role", "").equals("admin")){
+            FirebaseDatabase.getInstance().getReference("user").child(pesanan.id).get().addOnSuccessListener {
+                val value = it.getValue(User::class.java)
+                alamatPesanan.text = value!!.nama + " | " + pesanan.lokasi
+            }
+        }
     }
 
     interface ClickListener {
@@ -55,7 +69,7 @@ class ViewholderPesanan(itemView: View): RecyclerView.ViewHolder(itemView) {
         fun onItemLongClick(view: View, position:Int)
     }
 
-    fun setOnClickListener(clickListener:ViewholderPesanan.ClickListener) {
+    fun setOnClickListener(clickListener:ClickListener) {
         mClickListener = clickListener
     }
 }

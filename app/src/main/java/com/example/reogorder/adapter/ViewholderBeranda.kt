@@ -1,6 +1,5 @@
 package com.example.reogorder.adapter
 
-import android.content.Context
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -19,7 +18,7 @@ class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    fun setDetails(ctx: Context, id:String, nama_sanggar:String, alamat_sanggar:String, nohp_sanggar:String) {
+    fun setDetails(id: String, nama_sanggar: String, alamat_sanggar: String, nohp_sanggar: String) {
         this.id_sanggar = id
         val namaSanggar = mView.findViewById(R.id.namaSanggar) as TextView
         val alamatSanggar = mView.findViewById(R.id.alamatSanggar) as TextView
@@ -35,7 +34,7 @@ class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
         fun onItemLongClick(view:View, position:Int)
     }
 
-    fun setOnClickListener(clickListener:ViewholderBeranda.ClickListener) {
+    fun setOnClickListener(clickListener: ClickListener) {
         mClickListener = clickListener
     }
 }
