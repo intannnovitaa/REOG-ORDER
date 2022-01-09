@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reogorder.R
 import com.example.reogorder.adapter.ViewholderPesanan
-import com.example.reogorder.customer.ActivityDetail
+import com.example.reogorder.ActivityDetail
 import com.example.reogorder.model.Pesanan
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.google.firebase.database.FirebaseDatabase

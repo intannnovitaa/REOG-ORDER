@@ -1,4 +1,4 @@
-package com.example.reogorder.customer
+package com.example.reogorder
 
 import android.content.Context
 import android.content.DialogInterface
