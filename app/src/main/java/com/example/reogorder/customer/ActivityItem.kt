@@ -15,6 +15,8 @@ import com.example.reogorder.model.Sanggar
 import com.example.reogorder.R
 import com.example.reogorder.model.Pesanan
 import com.google.firebase.database.*
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class ActivityItem : AppCompatActivity() {
     lateinit var databaseSanggar: DatabaseReference
@@ -121,6 +123,19 @@ class ActivityItem : AppCompatActivity() {
     var wktPesanan = ""
     var lokPesanan = ""
     lateinit var SP: SharedPreferences
+    var formatNumber: NumberFormat = DecimalFormat("#,###")
+
+    var hargaBarong = ""
+    var hargaJathil = ""
+    var hargaKlonosewandono = ""
+    var hargaBujang = ""
+    var hargaWarog = ""
+    var hargaGendang = ""
+    var hargaKetipung = ""
+    var hargaSlompret = ""
+    var hargaKenong = ""
+    var hargaGong = ""
+    var hargaAngklung = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -235,37 +250,37 @@ class ActivityItem : AppCompatActivity() {
             val sanggarI = sanggarItem.text.toString()
             val alamatI = alamatItem.text.toString()
             val namaBarongI = namaBarongItem.text.toString()
-            val hargaBarongI = hargaBarongItem.text.toString()
+            val hargaBarongI = hargaBarong
             val jumlahBarongI = jumlahBarongItem.text.toString()
             val namaJathilI = namaJathilItem.text.toString()
-            val hargaJathilI = hargaJathilItem.text.toString()
+            val hargaJathilI = hargaJathil
             val jumlahJathilI = jumlahJathilItem.text.toString()
             val namaKlonosewandonoI = namaKlonosewandonoItem.text.toString()
-            val hargaKlonosewandonoI = hargaKlonosewandonoItem.text.toString()
+            val hargaKlonosewandonoI = hargaKlonosewandono
             val jumlahKlonosewandonoI = jumlahKlonosewandonoItem.text.toString()
             val namaBujangI = namaBujangItem.text.toString()
-            val hargaBujangI = hargaBujangItem.text.toString()
+            val hargaBujangI = hargaBujang
             val jumlahBujangI = jumlahBujangItem.text.toString()
             val namaWarogI = namaWarogItem.text.toString()
-            val hargaWarogI = hargaWarogItem.text.toString()
+            val hargaWarogI = hargaWarog
             val jumlahWarogI = jumlahWarogItem.text.toString()
             val namaGendangI = namaGendangItem.text.toString()
-            val hargaGendangI = hargaGendangItem.text.toString()
+            val hargaGendangI = hargaGendang
             val jumlahGendangI = jumlahGendangItem.text.toString()
             val namaKetipungI = namaKetipungItem.text.toString()
-            val hargaKetipungI = hargaKetipungItem.text.toString()
+            val hargaKetipungI = hargaKetipung
             val jumlahKetipungI = jumlahKetipungItem.text.toString()
             val namaSlompretI = namaSlompretItem.text.toString()
-            val hargaSlompretI = hargaSlompretItem.text.toString()
+            val hargaSlompretI = hargaSlompret
             val jumlahSlompretI = jumlahSlompretItem.text.toString()
             val namaKenongI = namaKenongItem.text.toString()
-            val hargaKenongI = hargaKenongItem.text.toString()
+            val hargaKenongI = hargaKenong
             val jumlahKenongI = jumlahKenongItem.text.toString()
             val namaGongI = namaGongItem.text.toString()
-            val hargaGongI = hargaGongItem.text.toString()
+            val hargaGongI = hargaGong
             val jumlahGongI = jumlahGongItem.text.toString()
             val namaAngklungI = namaAngklungItem.text.toString()
-            val hargaAngklungI = hargaAngklungItem.text.toString()
+            val hargaAngklungI = hargaAngklung
             val jumlahAngklungI = jumlahAngklungItem.text.toString()
             
             val intent = Intent(this, ActivityCheckout::class.java)
@@ -337,67 +352,78 @@ class ActivityItem : AppCompatActivity() {
                         idBarong = allocation.id_item
                         namaBarongItem.text = allocation.nama_item
                         stokBarongItem.text = allocation.stok
-                        hargaBarongItem.text = allocation.harga
+                        hargaBarong = allocation.harga
+                        hargaBarongItem.text = "Rp. " + formatNumber.format(hargaBarong.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Jathil"){
                         idJathil = allocation.id_item
                         namaJathilItem.text = allocation.nama_item
                         stokJathilItem.text = allocation.stok
-                        hargaJathilItem.text = allocation.harga
+                        hargaJathil = allocation.harga
+                        hargaJathilItem.text = "Rp. " + formatNumber.format(hargaJathil.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Klonosewandono"){
                         idKlonosewandono = allocation.id_item
                         namaKlonosewandonoItem.text = allocation.nama_item
                         stokKlonosewandonoItem.text = allocation.stok
-                        hargaKlonosewandonoItem.text = allocation.harga
+                        hargaKlonosewandono = allocation.harga
+                        hargaKlonosewandonoItem.text = "Rp. " + formatNumber.format(hargaKlonosewandono.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Bujang Ganong"){
                         idBujang = allocation.id_item
                         namaBujangItem.text = allocation.nama_item
                         stokBujangItem.text = allocation.stok
-                        hargaBujangItem.text = allocation.harga
+                        hargaBujang = allocation.harga
+                        hargaBujangItem.text = "Rp. " + formatNumber.format(hargaBujang.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Warog"){
                         idWarog = allocation.id_item
                         namaWarogItem.text = allocation.nama_item
                         stokWarogItem.text = allocation.stok
-                        hargaWarogItem.text = allocation.harga
+                        hargaWarog = allocation.harga
+                        hargaWarogItem.text = "Rp. " + formatNumber.format(hargaWarog.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Gendang"){
                         idGendang = allocation.id_item
                         namaGendangItem.text = allocation.nama_item
                         stokGendangItem.text = allocation.stok
-                        hargaGendangItem.text = allocation.harga
+                        hargaGendang = allocation.harga
+                        hargaGendangItem.text = "Rp. " + formatNumber.format(hargaGendang.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Ketipung"){
                         idKetipung = allocation.id_item
                         namaKetipungItem.text = allocation.nama_item
                         stokKetipungItem.text = allocation.stok
-                        hargaKetipungItem.text = allocation.harga
+                        hargaKetipung = allocation.harga
+                        hargaKetipungItem.text = "Rp. " + formatNumber.format(hargaKetipung.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Slompret"){
                         idSlompret = allocation.id_item
                         namaSlompretItem.text = allocation.nama_item
                         stokSlompretItem.text = allocation.stok
-                        hargaSlompretItem.text = allocation.harga
+                        hargaSlompret = allocation.harga
+                        hargaSlompretItem.text = "Rp. " + formatNumber.format(hargaSlompret.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Kenong"){
                         idKenong = allocation.id_item
                         namaKenongItem.text = allocation.nama_item
                         stokKenongItem.text = allocation.stok
-                        hargaKenongItem.text = allocation.harga
+                        hargaKenong = allocation.harga
+                        hargaKenongItem.text = "Rp. " + formatNumber.format(hargaKenong.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Gong"){
                         idGong = allocation.id_item
                         namaGongItem.text = allocation.nama_item
                         stokGongItem.text = allocation.stok
-                        hargaGongItem.text = allocation.harga
+                        hargaGong = allocation.harga
+                        hargaGongItem.text = "Rp. " + formatNumber.format(hargaGong.toInt()) + ",00"
                     }
                     if(allocation.nama_item == "Angklung"){
                         idAngklung = allocation.id_item
                         namaAngklungItem.text = allocation.nama_item
                         stokAngklungItem.text = allocation.stok
-                        hargaAngklungItem.text = allocation.harga
+                        hargaAngklung = allocation.harga
+                        hargaAngklungItem.text = "Rp. " + formatNumber.format(hargaAngklung.toInt()) + ",00"
                     }
                 }
             }

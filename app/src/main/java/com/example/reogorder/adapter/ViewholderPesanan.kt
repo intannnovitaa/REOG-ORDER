@@ -13,12 +13,15 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import java.text.DecimalFormat
+import java.text.NumberFormat
 
 class ViewholderPesanan(itemView: View): RecyclerView.ViewHolder(itemView) {
     internal var mView: View = itemView
     private var mClickListener: ClickListener? = null
     val SP: SharedPreferences = itemView.context.getSharedPreferences("Login", Context.MODE_PRIVATE)
     var id_pesanan = ""
+    var formatNumber: NumberFormat = DecimalFormat("#,###")
 
     init{
         itemView.setOnClickListener { view -> mClickListener!!.onItemClick(view, adapterPosition) }
@@ -53,7 +56,7 @@ class ViewholderPesanan(itemView: View): RecyclerView.ViewHolder(itemView) {
         tanggalPesanan.text = pesanan.tanggal
         waktuPesanan.text = pesanan.waktu
         alamatPesanan.text = pesanan.lokasi
-        bayarPesanan.text = pesanan.total_bayar
+        bayarPesanan.text = "Rp. " + formatNumber.format(pesanan.total_bayar.toInt()) + ",00"
         this.id_pesanan = pesanan.id_pesanan
 
         if(SP.getString("role", "").equals("admin")){

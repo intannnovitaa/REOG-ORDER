@@ -16,6 +16,8 @@ import com.example.reogorder.model.Detail
 import com.example.reogorder.model.Pesanan
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import java.text.DecimalFormat
+import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -94,6 +96,8 @@ class ActivityCheckout : AppCompatActivity() {
     var formateDate = SimpleDateFormat("dd MMM YYYY")
     val date = Calendar.getInstance()
     var formateTime = SimpleDateFormat("hh:mm aa")
+    var formatNumber: NumberFormat = DecimalFormat("#,###")
+    var totalBayar = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -208,37 +212,37 @@ class ActivityCheckout : AppCompatActivity() {
         namaSanggarCo.text = intent.getStringExtra("sanggar").toString()
         alamatSanggarCo.text = intent.getStringExtra("alamat").toString()
         namaBarongCo.text = intent.getStringExtra("namaBarong").toString()
-        hargaBarongCo.text = intent.getStringExtra("hargaBarong").toString()
+        hargaBarongCo.text = formatNumber.format(intent.getStringExtra("hargaBarong")!!.toInt())
         jumlahBarongCo.text = intent.getStringExtra("jumlahBarong").toString()
         namaJathilCo.text = intent.getStringExtra("namaJathil").toString()
-        hargaJathilCo.text = intent.getStringExtra("hargaJathil").toString()
+        hargaJathilCo.text = formatNumber.format(intent.getStringExtra("hargaJathil")!!.toInt())
         jumlahJathilCo.text = intent.getStringExtra("jumlahJathil").toString()
         namaKlonosewandonoCo.text = intent.getStringExtra("namaKlonosewandono").toString()
-        hargaKlonosewandonoCo.text = intent.getStringExtra("hargaKlonosewandono").toString()
+        hargaKlonosewandonoCo.text = formatNumber.format(intent.getStringExtra("hargaKlonosewandono")!!.toInt())
         jumlahKlonosewandonoCo.text = intent.getStringExtra("jumlahKlonosewandono").toString()
         namaBujangCo.text = intent.getStringExtra("namaBujang").toString()
-        hargaBujangCo.text = intent.getStringExtra("hargaBujang").toString()
+        hargaBujangCo.text = formatNumber.format(intent.getStringExtra("hargaBujang")!!.toInt())
         jumlahBujangCo.text = intent.getStringExtra("jumlahBujang").toString()
         namaWarogCo.text = intent.getStringExtra("namaWarog").toString()
-        hargaWarogCo.text = intent.getStringExtra("hargaWarog").toString()
+        hargaWarogCo.text = formatNumber.format(intent.getStringExtra("hargaWarog")!!.toInt())
         jumlahWarogCo.text = intent.getStringExtra("jumlahWarog").toString()
         namaGendangCo.text = intent.getStringExtra("namaGendang").toString()
-        hargaGendangCo.text = intent.getStringExtra("hargaGendang").toString()
+        hargaGendangCo.text = formatNumber.format(intent.getStringExtra("hargaGendang")!!.toInt())
         jumlahGendangCo.text = intent.getStringExtra("jumlahGendang").toString()
         namaKetipungCo.text = intent.getStringExtra("namaKetipung").toString()
-        hargaKetipungCo.text = intent.getStringExtra("hargaKetipung").toString()
+        hargaKetipungCo.text = formatNumber.format(intent.getStringExtra("hargaKetipung")!!.toInt())
         jumlahKetipungCo.text = intent.getStringExtra("jumlahKetipung").toString()
         namaSlompretCo.text = intent.getStringExtra("namaSlompret").toString()
-        hargaSlompretCo.text = intent.getStringExtra("hargaSlompret").toString()
+        hargaSlompretCo.text = formatNumber.format(intent.getStringExtra("hargaSlompret")!!.toInt())
         jumlahSlompretCo.text = intent.getStringExtra("jumlahSlompret").toString()
         namaKenongCo.text = intent.getStringExtra("namaKenong").toString()
-        hargaKenongCo.text = intent.getStringExtra("hargaKenong").toString()
+        hargaKenongCo.text = formatNumber.format(intent.getStringExtra("hargaKenong")!!.toInt())
         jumlahKenongCo.text = intent.getStringExtra("jumlahKenong").toString()
         namaGongCo.text = intent.getStringExtra("namaGong").toString()
-        hargaGongCo.text = intent.getStringExtra("hargaGong").toString()
+        hargaGongCo.text = formatNumber.format(intent.getStringExtra("hargaGong")!!.toInt())
         jumlahGongCo.text = intent.getStringExtra("jumlahGong").toString()
         namaAngklungCo.text = intent.getStringExtra("namaAngklung").toString()
-        hargaAngklungCo.text = intent.getStringExtra("hargaAngklung").toString()
+        hargaAngklungCo.text = formatNumber.format(intent.getStringExtra("hargaAngklung")!!.toInt())
         jumlahAngklungCo.text = intent.getStringExtra("jumlahAngklung").toString()
 
         if(intent.getStringExtra("jumlahBarong").toString().toInt() == 0) {
@@ -286,8 +290,9 @@ class ActivityCheckout : AppCompatActivity() {
         hasilGong = intent.getStringExtra("hargaGong")!!.toInt() * intent.getStringExtra("jumlahGong")!!.toInt()
         hasilAngklung = intent.getStringExtra("hargaAngklung")!!.toInt() * intent.getStringExtra("jumlahAngklung")!!.toInt()
 
-        totalBiayaCo.text = (hasilBarong + hasilJathil + hasilKlonosewandono + hasilBujang + hasilWarog + hasilGendang +
+        totalBayar = (hasilBarong + hasilJathil + hasilKlonosewandono + hasilBujang + hasilWarog + hasilGendang +
                 hasilKetipung + hasilSlompret + hasilKenong + hasilGong + hasilAngklung).toString()
+        totalBiayaCo.text = "Rp. " + formatNumber.format(totalBayar.toInt()) + ",00"
     }
 
     private fun addPesanan(): Boolean {
@@ -298,7 +303,7 @@ class ActivityCheckout : AppCompatActivity() {
         val waktu = waktuCo.text.toString().trim()
         val tanggal = tanggalCo.text.toString().trim()
         val lokasi = lokasiCo.text.toString().trim()
-        val total = totalBiayaCo.text.toString().trim()
+        val total = totalBayar.trim()
         val status = "Diproses"
 
         val idSanggar = intent.getStringExtra("idSanggar").toString()
