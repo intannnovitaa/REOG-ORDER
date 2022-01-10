@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
-import android.util.Log
 import android.widget.*
 import com.example.reogorder.R
 import com.example.reogorder.model.Item
 import com.example.reogorder.model.Sanggar
 import com.google.firebase.database.*
-import java.text.DecimalFormat
-import java.text.NumberFormat
 
 class ActivityEditAdmin : AppCompatActivity() {
     lateinit var namaSanggar: EditText
@@ -58,10 +55,6 @@ class ActivityEditAdmin : AppCompatActivity() {
     lateinit var databaseItem: DatabaseReference
     var idSanggar = ""
     var idItem = arrayListOf<String>()
-
-    data class harga(val nama: String = "", val harga_item: String = "")
-    var hargaItem = arrayListOf<harga>()
-    var formatNumber: NumberFormat = DecimalFormat("#,###")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -301,7 +294,6 @@ class ActivityEditAdmin : AppCompatActivity() {
                         stokAngklung.text = Editable.Factory.getInstance().newEditable(allocation.stok)
                     }
 
-                    hargaItem.add(harga(allocation.nama_item, allocation.harga))
                     idItem.add(allocation.id_item)
                 }
             }
