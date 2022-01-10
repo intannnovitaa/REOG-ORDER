@@ -6,20 +6,23 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.reogorder.R
 import com.example.reogorder.model.Detail
+import com.example.reogorder.model.Item
 import com.example.reogorder.model.Pesanan
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class ActivityCheckout : AppCompatActivity() {
     lateinit var databasePesanan: DatabaseReference
@@ -298,6 +301,9 @@ class ActivityCheckout : AppCompatActivity() {
     private fun addPesanan(): Boolean {
         SP = applicationContext.getSharedPreferences("Login", Context.MODE_PRIVATE)
 
+        btnCheckout.isClickable = false
+        btnCheckout.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
+
         val item = arrayListOf<Detail>()
         val id = SP.getString("id", "").toString().trim()
         val waktu = waktuCo.text.toString().trim()
@@ -360,7 +366,36 @@ class ActivityCheckout : AppCompatActivity() {
 
         if(!TextUtils.isEmpty(waktu) && !TextUtils.isEmpty(tanggal) && !TextUtils.isEmpty(lokasi)) {
             val addPesanan = Pesanan(idPesanan, idSanggar, item, id, waktu, tanggal, lokasi, total, status, (id+'|'+status))
-            databasePesanan.child(idPesanan).setValue(addPesanan)
+
+            val oldItem = arrayListOf<Item>()
+            FirebaseDatabase.getInstance().getReference("item").child(idSanggar)
+                .addValueEventListener( object : ValueEventListener{
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (h in snapshot.children){
+                            val value = h.getValue(Item::class.java)
+
+                            oldItem.add(value!!)
+                        }
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {  }
+
+                })
+
+            databasePesanan.child(idPesanan).setValue(addPesanan).addOnCompleteListener {
+                item.forEach { itm ->
+                    oldItem.forEach { old ->
+                        if(old.id_item.equals(itm.id_detail)) {
+                            val stok = (old.stok.toInt() - itm.jumlah.toInt()).toString()
+                            FirebaseDatabase.getInstance().getReference("item")
+                                .child(old.id_sanggar)
+                                .child(old.id_item)
+                                .child("stok")
+                                .setValue(stok)
+                        }
+                    }
+                }
+            }
             return true
         } else {
             return false
