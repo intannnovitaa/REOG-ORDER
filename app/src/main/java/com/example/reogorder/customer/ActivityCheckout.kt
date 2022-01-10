@@ -196,6 +196,8 @@ class ActivityCheckout : AppCompatActivity() {
                 finish()
             }
             else{
+                btnCheckout.isClickable = true
+                btnCheckout.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
                 Toast.makeText(this, "Lengkapi Data",Toast.LENGTH_LONG).show()
             }
         }
