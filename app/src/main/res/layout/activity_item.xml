@@ -10,7 +10,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="300dp"
         android:background="@drawable/dec_gradasi" />
 
     <LinearLayout
@@ -52,32 +52,75 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/layoutRekom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/titleItem">
+        <Button
+            android:id="@+id/btnSaran1"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="SARAN 1"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"/>
+
+        <Button
+            android:id="@+id/btnSaran2"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="SARAN 2"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"/>
+
+        <Button
+            android:id="@+id/btnSemua"
+            android:layout_width="0dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@color/colorAccent"
+            android:text="SEMUA"
+            android:textColor="@android:color/white"
+            android:textSize="15dp"/>
+    </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/titleItem"
+        android:layout_below="@+id/layoutRekom"
         android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardBarong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutBarong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangBarongItem"
                             android:layout_width="25dp"
@@ -85,7 +128,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahBarongItem"
@@ -93,12 +136,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahBarongItem"
@@ -106,7 +149,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -114,6 +157,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toLeftOf="@+id/layoutBarong"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/namaBarongItem"
                             android:layout_width="match_parent"
@@ -131,6 +175,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -159,22 +204,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardJathil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutJathil"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangJathilItem"
                             android:layout_width="25dp"
@@ -182,7 +231,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahJathilItem"
@@ -190,12 +239,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahJathilItem"
@@ -203,7 +252,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -229,6 +278,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -257,22 +307,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardKlonosewandono"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutKlonosewandono"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangKlonosewandonoItem"
                             android:layout_width="25dp"
@@ -280,7 +334,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahKlonosewandonoItem"
@@ -288,12 +342,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahKlonosewandonoItem"
@@ -301,7 +355,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -327,6 +381,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -355,22 +410,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardBujang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutBujang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangBujangItem"
                             android:layout_width="25dp"
@@ -378,7 +437,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahBujangItem"
@@ -386,12 +445,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahBujangItem"
@@ -399,7 +458,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -425,6 +484,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -453,22 +513,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardWarog"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutWarog"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangWarogItem"
                             android:layout_width="25dp"
@@ -476,7 +540,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahWarogItem"
@@ -484,12 +548,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahWarogItem"
@@ -497,7 +561,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -523,6 +587,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -551,22 +616,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardGendang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutGendang"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangGendangItem"
                             android:layout_width="25dp"
@@ -574,7 +643,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahGendangItem"
@@ -582,12 +651,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahGendangItem"
@@ -595,7 +664,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -621,6 +690,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -649,22 +719,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardKetipung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutKetipung"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangKetipungItem"
                             android:layout_width="25dp"
@@ -672,7 +746,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahKetipungItem"
@@ -680,12 +754,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahKetipungItem"
@@ -693,7 +767,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -719,6 +793,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -747,22 +822,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardSlompret"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutSlompret"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangSlompretItem"
                             android:layout_width="25dp"
@@ -770,7 +849,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahSlompretItem"
@@ -778,12 +857,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahSlompretItem"
@@ -791,7 +870,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -817,6 +896,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -845,22 +925,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardKenong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutKenong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangKenongItem"
                             android:layout_width="25dp"
@@ -868,7 +952,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahKenongItem"
@@ -876,12 +960,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahKenongItem"
@@ -889,7 +973,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -915,6 +999,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -943,22 +1028,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardGong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutGong"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangGongItem"
                             android:layout_width="25dp"
@@ -966,7 +1055,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahGongItem"
@@ -974,12 +1063,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahGongItem"
@@ -987,7 +1076,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1013,6 +1102,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -1041,22 +1131,26 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardAngklung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginVertical="5dp"
+                android:layout_marginTop="10dp"
                 app:cardElevation="3dp">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp">
+
                     <LinearLayout
                         android:id="@+id/layoutAngklung"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
                         android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
                         android:orientation="horizontal">
+
                         <ImageView
                             android:id="@+id/kurangAngklungItem"
                             android:layout_width="25dp"
@@ -1064,7 +1158,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:background="@drawable/ic_kurang"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
 
                         <EditText
                             android:id="@+id/jumlahAngklungItem"
@@ -1072,12 +1166,12 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="2dp"
                             android:backgroundTint="@color/colorAccent"
+                            android:editable="false"
                             android:text="0"
                             android:textAlignment="center"
                             android:textColor="@android:color/black"
                             android:textSize="15dp"
-                            android:textStyle="bold"
-                            android:editable="false"/>
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/tambahAngklungItem"
@@ -1085,7 +1179,7 @@
                             android:layout_height="25dp"
                             android:layout_gravity="center_vertical"
                             android:background="@drawable/ic_tambah_1"
-                            android:backgroundTint="@color/colorPrimary"/>
+                            android:backgroundTint="@color/colorPrimary" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -1111,6 +1205,7 @@
                             android:layout_marginHorizontal="5dp"
                             android:layout_marginBottom="5dp"
                             android:orientation="horizontal">
+
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"

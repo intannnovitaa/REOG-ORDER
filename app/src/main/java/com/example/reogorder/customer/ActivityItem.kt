@@ -3,13 +3,16 @@ package com.example.reogorder.customer
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.example.reogorder.model.Item
 import com.example.reogorder.model.Sanggar
 import com.example.reogorder.R
@@ -17,6 +20,7 @@ import com.example.reogorder.model.Pesanan
 import com.google.firebase.database.*
 import java.text.DecimalFormat
 import java.text.NumberFormat
+import kotlin.math.pow
 
 class ActivityItem : AppCompatActivity() {
     lateinit var databaseSanggar: DatabaseReference
@@ -93,6 +97,18 @@ class ActivityItem : AppCompatActivity() {
     lateinit var tambahAngklungItem: ImageView
     lateinit var kurangAngklungItem: ImageView
 
+    lateinit var cardBarong: CardView
+    lateinit var cardJathil: CardView
+    lateinit var cardKlonosewandono: CardView
+    lateinit var cardBujang: CardView
+    lateinit var cardWarog: CardView
+    lateinit var cardGendang: CardView
+    lateinit var cardKetipung: CardView
+    lateinit var cardSlompret: CardView
+    lateinit var cardKenong: CardView
+    lateinit var cardGong: CardView
+    lateinit var cardAngklung: CardView
+
     var idSanggar = ""
     var idBarong = ""
     var idJathil = ""
@@ -137,7 +153,22 @@ class ActivityItem : AppCompatActivity() {
     var hargaGong = ""
     var hargaAngklung = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    lateinit var btnSaran1: Button
+    lateinit var btnSaran2: Button
+    lateinit var btnSemua: Button
+    var clusterBarong = ""
+    var clusterJathil = ""
+    var clusterKlonosewandono = ""
+    var clusterBujang = ""
+    var clusterWarog = ""
+    var clusterGendang = ""
+    var clusterKetipung = ""
+    var clusterSlompret = ""
+    var clusterKenong = ""
+    var clusterGong = ""
+    var clusterAngklung = ""
+
+        override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item)
 
@@ -214,6 +245,22 @@ class ActivityItem : AppCompatActivity() {
         tambahAngklungItem = findViewById(R.id.tambahAngklungItem)
         kurangAngklungItem = findViewById(R.id.kurangAngklungItem)
 
+        cardBarong = findViewById(R.id.cardBarong)
+        cardJathil = findViewById(R.id.cardJathil)
+        cardKlonosewandono = findViewById(R.id.cardKlonosewandono)
+        cardBujang = findViewById(R.id.cardBujang)
+        cardWarog = findViewById(R.id.cardWarog)
+        cardGendang = findViewById(R.id.cardGendang)
+        cardKetipung = findViewById(R.id.cardKetipung)
+        cardSlompret = findViewById(R.id.cardSlompret)
+        cardKenong = findViewById(R.id.cardKenong)
+        cardGong = findViewById(R.id.cardGong)
+        cardAngklung = findViewById(R.id.cardAngklung)
+
+        btnSaran1 = findViewById(R.id.btnSaran1)
+        btnSaran2 = findViewById(R.id.btnSaran2)
+        btnSemua = findViewById(R.id.btnSemua)
+
         databaseSanggar = FirebaseDatabase.getInstance().getReference("sanggar")
         val query = databaseSanggar.orderByKey().equalTo(intent.getStringExtra("id_sanggar").toString())
         query.addListenerForSingleValueEvent(object: ValueEventListener {
@@ -230,9 +277,169 @@ class ActivityItem : AppCompatActivity() {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
+        btnSemua.setOnClickListener {
+            btnSemua.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+            btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            cardBarong.visibility = View.VISIBLE
+            cardJathil.visibility = View.VISIBLE
+            cardKlonosewandono.visibility = View.VISIBLE
+            cardBujang.visibility = View.VISIBLE
+            cardWarog.visibility = View.VISIBLE
+            cardGendang.visibility = View.VISIBLE
+            cardKetipung.visibility = View.VISIBLE
+            cardSlompret.visibility = View.VISIBLE
+            cardKenong.visibility = View.VISIBLE
+            cardGong.visibility = View.VISIBLE
+            cardAngklung.visibility = View.VISIBLE
+        }
+        btnSaran1.setOnClickListener {
+            btnSemua.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+            btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            if(clusterBarong == "C1") {
+                cardBarong.visibility = View.VISIBLE
+            }
+            if(clusterBarong == "C2") {
+                cardBarong.visibility = View.GONE
+            }
+            if(clusterJathil == "C1") {
+                cardJathil.visibility = View.VISIBLE
+            }
+            if(clusterJathil == "C2") {
+                cardJathil.visibility = View.GONE
+            }
+            if(clusterKlonosewandono == "C1") {
+                cardKlonosewandono.visibility = View.VISIBLE
+            }
+            if(clusterKlonosewandono == "C2") {
+                cardKlonosewandono.visibility = View.GONE
+            }
+            if(clusterBujang == "C1") {
+                cardBujang.visibility = View.VISIBLE
+            }
+            if(clusterBujang == "C2") {
+                cardBujang.visibility = View.GONE
+            }
+            if(clusterWarog == "C1") {
+                cardWarog.visibility = View.VISIBLE
+            }
+            if(clusterWarog == "C2") {
+                cardWarog.visibility = View.GONE
+            }
+            if(clusterGendang == "C1") {
+                cardGendang.visibility = View.VISIBLE
+            }
+            if(clusterGendang == "C2") {
+                cardGendang.visibility = View.GONE
+            }
+            if(clusterKetipung == "C1") {
+                cardKetipung.visibility = View.VISIBLE
+            }
+            if(clusterKetipung == "C2") {
+                cardKetipung.visibility = View.GONE
+            }
+            if(clusterSlompret == "C1") {
+                cardSlompret.visibility = View.VISIBLE
+            }
+            if(clusterSlompret == "C2") {
+                cardSlompret.visibility = View.GONE
+            }
+            if(clusterKenong == "C1") {
+                cardKenong.visibility = View.VISIBLE
+            }
+            if(clusterKenong == "C2") {
+                cardKenong.visibility = View.GONE
+            }
+            if(clusterGong == "C1") {
+                cardGong.visibility = View.VISIBLE
+            }
+            if(clusterGong == "C2") {
+                cardGong.visibility = View.GONE
+            }
+            if(clusterAngklung == "C1") {
+                cardAngklung.visibility = View.VISIBLE
+            }
+            if(clusterAngklung == "C2") {
+                cardAngklung.visibility = View.GONE
+            }
+        }
+        btnSaran2.setOnClickListener {
+            btnSemua.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+            if(clusterBarong == "C2") {
+                cardBarong.visibility = View.VISIBLE
+            }
+            if(clusterBarong == "C1") {
+                cardBarong.visibility = View.GONE
+            }
+            if(clusterJathil == "C2") {
+                cardJathil.visibility = View.VISIBLE
+            }
+            if(clusterJathil == "C1") {
+                cardJathil.visibility = View.GONE
+            }
+            if(clusterKlonosewandono == "C2") {
+                cardKlonosewandono.visibility = View.VISIBLE
+            }
+            if(clusterKlonosewandono == "C1") {
+                cardKlonosewandono.visibility = View.GONE
+            }
+            if(clusterBujang == "C2") {
+                cardBujang.visibility = View.VISIBLE
+            }
+            if(clusterBujang == "C1") {
+                cardBujang.visibility = View.GONE
+            }
+            if(clusterWarog == "C2") {
+                cardWarog.visibility = View.VISIBLE
+            }
+            if(clusterWarog == "C1") {
+                cardWarog.visibility = View.GONE
+            }
+            if(clusterGendang == "C2") {
+                cardGendang.visibility = View.VISIBLE
+            }
+            if(clusterGendang == "C1") {
+                cardGendang.visibility = View.GONE
+            }
+            if(clusterKetipung == "C2") {
+                cardKetipung.visibility = View.VISIBLE
+            }
+            if(clusterKetipung == "C1") {
+                cardKetipung.visibility = View.GONE
+            }
+            if(clusterSlompret == "C2") {
+                cardSlompret.visibility = View.VISIBLE
+            }
+            if(clusterSlompret == "C1") {
+                cardSlompret.visibility = View.GONE
+            }
+            if(clusterKenong == "C2") {
+                cardKenong.visibility = View.VISIBLE
+            }
+            if(clusterKenong == "C1") {
+                cardKenong.visibility = View.GONE
+            }
+            if(clusterGong == "C2") {
+                cardGong.visibility = View.VISIBLE
+            }
+            if(clusterGong == "C1") {
+                cardGong.visibility = View.GONE
+            }
+            if(clusterAngklung == "C2") {
+                cardAngklung.visibility = View.VISIBLE
+            }
+            if(clusterAngklung == "C1") {
+                cardAngklung.visibility = View.GONE
+            }
+        }
+
         loadItem()
         setJumlah()
         checkOldData()
+        fuzzyCMeans()
 
         btnCheckout.setOnClickListener {
             val idBarongI = idBarong.trim()
@@ -656,6 +863,11 @@ class ActivityItem : AppCompatActivity() {
                                                         }
                                                     }
                                                 }
+                                                btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
+                                                btnSaran1.isClickable = false
+                                                btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
+                                                btnSaran2.isClickable = false
+                                                btnSemua.isClickable = false
                                             }
                                             override fun onCancelled(p0: DatabaseError) { }
                                         })
@@ -666,5 +878,193 @@ class ActivityItem : AppCompatActivity() {
                 }
                 override fun onCancelled(p0: DatabaseError) { }
             })
+    }
+
+
+
+    private fun fuzzyCMeans() {
+        val x1Barong = (stokBarongItem.text.toString().toFloat() * 1000000)/100000
+        val x1Jathil = (stokJathilItem.text.toString().toFloat() * 150000)/100000
+        val x1Klonosewandono = (stokKlonosewandonoItem.text.toString().toFloat() * 100000)/100000
+        val x1Bujang = (stokBujangItem.text.toString().toFloat() * 150000)/100000
+        val x1Warog = (stokWarogItem.text.toString().toFloat() * 100000)/100000
+        val x1Gendang = (stokGendangItem.text.toString().toFloat() * 400000)/100000
+        val x1Ketipung = (stokKetipungItem.text.toString().toFloat() * 300000)/100000
+        val x1Slompret = (stokSlompretItem.text.toString().toFloat() * 300000)/100000
+        val x1Kenong = (stokKenongItem.text.toString().toFloat() * 200000)/100000
+        val x1Gong = (stokGongItem.text.toString().toFloat() * 300000)/100000
+        val x1Angklung = (stokAngklungItem.text.toString().toFloat() * 200000)/100000
+
+        val c1Barong = 0.3
+        val c2Barong = 0.7
+        val c1Jathil = 0.0
+        val c2Jathil = 1.0
+        val c1Klonosewandono = 0.9
+        val c2Klonosewandono = 0.1
+        val c1Bujang = 1.0
+        val c2Bujang = 0.0
+        val c1Warog = 0.4
+        val c2Warog = 0.6
+        val c1Gendang = 0.1
+        val c2Gendang = 0.9
+        val c1Ketipung = 0.7
+        val c2Ketipung = 0.3
+        val c1Slompret = 0.9
+        val c2Slompret = 0.1
+        val c1Kenong = 1.0
+        val c2Kenong = 0.0
+        val c1Gong = 1.0
+        val c2Gong = 0.0
+        val c1Angklung = 0.9
+        val c2Angklung = 0.1
+
+        val miuC1Barong = (c1Barong.pow(2)).toFloat()
+        val miuC2Barong = (c2Barong.pow(2)).toFloat()
+        val miuC1Jathil = (c1Jathil.pow(2)).toFloat()
+        val miuC2Jathil = (c2Jathil.pow(2)).toFloat()
+        val miuC1Klonosewandono = (c1Klonosewandono.pow(2)).toFloat()
+        val miuC2Klonosewandono = (c2Klonosewandono.pow(2)).toFloat()
+        val miuC1Bujang = (c1Bujang.pow(2)).toFloat()
+        val miuC2Bujang = (c2Bujang.pow(2)).toFloat()
+        val miuC1Warog = (c1Warog.pow(2)).toFloat()
+        val miuC2Warog = (c2Warog.pow(2)).toFloat()
+        val miuC1Gendang = (c1Gendang.pow(2)).toFloat()
+        val miuC2Gendang = (c2Gendang.pow(2)).toFloat()
+        val miuC1Ketipung = (c1Ketipung.pow(2)).toFloat()
+        val miuC2Ketipung = (c2Ketipung.pow(2)).toFloat()
+        val miuC1Slompret = (c1Slompret.pow(2)).toFloat()
+        val miuC2Slompret = (c2Slompret.pow(2)).toFloat()
+        val miuC1Kenong = (c1Kenong.pow(2)).toFloat()
+        val miuC2Kenong = (c2Kenong.pow(2)).toFloat()
+        val miuC1Gong = (c1Gong.pow(2)).toFloat()
+        val miuC2Gong = (c2Gong.pow(2)).toFloat()
+        val miuC1Angklung = (c1Angklung.pow(2)).toFloat()
+        val miuC2Angklung = (c2Angklung.pow(2)).toFloat()
+
+        val x1C1Barong = x1Barong * c1Barong.toFloat()
+        val x1C2Barong = x1Barong * c2Barong.toFloat()
+        val x1C1Jathil = x1Jathil * c1Jathil.toFloat()
+        val x1C2Jathil = x1Jathil * c2Jathil.toFloat()
+        val x1C1Klonosewandono = x1Klonosewandono * c1Klonosewandono.toFloat()
+        val x1C2Klonosewandono = x1Klonosewandono * c2Klonosewandono.toFloat()
+        val x1C1Bujang = x1Bujang * c1Bujang.toFloat()
+        val x1C2Bujang = x1Bujang * c2Bujang.toFloat()
+        val x1C1Warog = x1Warog * c1Warog.toFloat()
+        val x1C2Warog = x1Warog * c2Warog.toFloat()
+        val x1C1Gendang = x1Gendang * c1Gendang.toFloat()
+        val x1C2Gendang = x1Gendang * c2Gendang.toFloat()
+        val x1C1Ketipung = x1Ketipung * c1Ketipung.toFloat()
+        val x1C2Ketipung = x1Ketipung * c2Ketipung.toFloat()
+        val x1C1Slompret = x1Slompret * c1Slompret.toFloat()
+        val x1C2Slompret = x1Slompret * c2Slompret.toFloat()
+        val x1C1Kenong = x1Kenong * c1Kenong.toFloat()
+        val x1C2Kenong = x1Kenong * c2Kenong.toFloat()
+        val x1C1Gong = x1Gong * c1Gong.toFloat()
+        val x1C2Gong = x1Gong * c2Gong.toFloat()
+        val x1C1Angklung = x1Angklung * c1Angklung.toFloat()
+        val x1C2Angklung = x1Angklung * c2Angklung.toFloat()
+
+        val pX1 = (x1C1Barong + x1C1Jathil + x1C1Klonosewandono + x1C1Bujang
+                + x1C1Warog + x1C1Gendang + x1C1Ketipung + x1C1Slompret
+                + x1C1Kenong + x1C1Gong + x1C1Angklung) / (miuC1Barong
+                + miuC1Jathil + miuC1Klonosewandono + miuC1Bujang + miuC1Warog
+                + miuC1Gendang + miuC1Ketipung + miuC1Slompret + miuC1Kenong
+                + miuC1Gong + miuC1Angklung)
+        val pX2 = (x1C2Barong + x1C2Jathil + x1C2Klonosewandono + x1C2Bujang
+                + x1C2Warog + x1C2Gendang + x1C2Ketipung + x1C2Slompret
+                + x1C2Kenong + x1C2Gong + x1C2Angklung) / (miuC2Barong
+                + miuC2Jathil + miuC2Klonosewandono + miuC2Bujang + miuC2Warog
+                + miuC2Gendang + miuC2Ketipung + miuC2Slompret + miuC2Kenong
+                + miuC2Gong + miuC2Angklung)
+
+        val l1Barong = ((x1Barong - pX1).pow(2)).pow(-1)
+        val l2Barong = ((x1Barong - pX2).pow(2)).pow(-1)
+        val l1Jathil = ((x1Jathil - pX1).pow(2)).pow(-1)
+        val l2Jathil = ((x1Jathil - pX2).pow(2)).pow(-1)
+        val l1Klonosewandono = ((x1Klonosewandono - pX1).pow(2)).pow(-1)
+        val l2Klonosewandono = ((x1Klonosewandono - pX2).pow(2)).pow(-1)
+        val l1Bujang = ((x1Bujang - pX1).pow(2)).pow(-1)
+        val l2Bujang = ((x1Bujang - pX2).pow(2)).pow(-1)
+        val l1Warog = ((x1Warog - pX1).pow(2)).pow(-1)
+        val l2Warog = ((x1Warog - pX2).pow(2)).pow(-1)
+        val l1Gendang = ((x1Gendang - pX1).pow(2)).pow(-1)
+        val l2Gendang = ((x1Gendang - pX2).pow(2)).pow(-1)
+        val l1Ketipung = ((x1Ketipung - pX1).pow(2)).pow(-1)
+        val l2Ketipung = ((x1Ketipung - pX2).pow(2)).pow(-1)
+        val l1Slompret = ((x1Slompret - pX1).pow(2)).pow(-1)
+        val l2Slompret = ((x1Slompret - pX2).pow(2)).pow(-1)
+        val l1Kenong = ((x1Kenong - pX1).pow(2)).pow(-1)
+        val l2Kenong = ((x1Kenong - pX2).pow(2)).pow(-1)
+        val l1Gong = ((x1Gong - pX1).pow(2)).pow(-1)
+        val l2Gong = ((x1Gong - pX2).pow(2)).pow(-1)
+        val l1Angklung = ((x1Angklung - pX1).pow(2)).pow(-1)
+        val l2Angklung = ((x1Angklung - pX2).pow(2)).pow(-1)
+
+        if(l1Barong > l2Barong) {
+            clusterBarong = "C1"
+        }
+        if(l1Barong < l2Barong) {
+            clusterBarong = "C2"
+        }
+        if(l1Jathil > l2Jathil) {
+            clusterJathil = "C1"
+        }
+        if(l1Jathil < l2Jathil) {
+            clusterJathil = "C2"
+        }
+        if(l1Klonosewandono > l2Klonosewandono) {
+            clusterKlonosewandono = "C1"
+        }
+        if(l1Klonosewandono < l2Klonosewandono) {
+            clusterKlonosewandono = "C2"
+        }
+        if(l1Bujang > l2Bujang) {
+            clusterBujang = "C1"
+        }
+        if(l1Bujang < l2Bujang) {
+            clusterBujang = "C2"
+        }
+        if(l1Warog > l2Warog) {
+            clusterWarog = "C1"
+        }
+        if(l1Warog < l2Warog) {
+            clusterWarog = "C2"
+        }
+        if(l1Gendang > l2Gendang) {
+            clusterGendang = "C1"
+        }
+        if(l1Gendang < l2Gendang) {
+            clusterGendang = "C2"
+        }
+        if(l1Ketipung > l2Ketipung) {
+            clusterKetipung = "C1"
+        }
+        if(l1Ketipung < l2Ketipung) {
+            clusterKetipung = "C2"
+        }
+        if(l1Slompret > l2Slompret) {
+            clusterSlompret = "C1"
+        }
+        if(l1Slompret < l2Slompret) {
+            clusterSlompret = "C2"
+        }
+        if(l1Kenong > l2Kenong) {
+            clusterKenong = "C1"
+        }
+        if(l1Kenong < l2Kenong) {
+            clusterKenong = "C2"
+        }
+        if(l1Gong > l2Gong) {
+            clusterGong = "C1"
+        }
+        if(l1Gong < l2Gong) {
+            clusterGong = "C2"
+        }
+        if(l1Angklung > l2Angklung) {
+            clusterAngklung = "C1"
+        }
+        if(l1Angklung < l2Angklung) {
+            clusterAngklung = "C2"
+        }
     }
 }
