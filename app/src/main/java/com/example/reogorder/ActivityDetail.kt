@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -14,6 +15,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.reogorder.R
 import com.example.reogorder.admin.ActivityUtamaAdmin
+import com.example.reogorder.customer.ActivityUtama
 import com.example.reogorder.model.*
 import com.google.firebase.database.*
 import java.text.DecimalFormat
@@ -79,6 +81,7 @@ class ActivityDetail : AppCompatActivity() {
 
     var id_user = ""
     var id_sanggar = ""
+    var pesananItem = arrayListOf<Detail>()
     var formatNumber: NumberFormat = DecimalFormat("#,###")
     lateinit var SP: SharedPreferences
 
@@ -159,6 +162,7 @@ class ActivityDetail : AppCompatActivity() {
                     tanggalDetail.text = allocation.tanggal
                     lokasiDetail.text = allocation.lokasi
                     totalBiayaDetail.text = "Rp. " + formatNumber.format(allocation.total_bayar.toInt()) + ",00"
+                    pesananItem = allocation.item
 
                     FirebaseDatabase.getInstance().getReference("user").orderByKey().equalTo(id_user).get().addOnSuccessListener {
                         for(h in it.children){
@@ -268,21 +272,52 @@ class ActivityDetail : AppCompatActivity() {
                 .setCancelable(false)
                 .setPositiveButton("YA", object: DialogInterface.OnClickListener {
                     override fun onClick(dialog: DialogInterface, id:Int) {
+                        btnSelesai.isClickable = false
+                        btnSelesai.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
+
+                        val oldItem = arrayListOf<Item>()
+                        FirebaseDatabase.getInstance().getReference("item").child(id_sanggar)
+                            .addValueEventListener( object : ValueEventListener{
+                                override fun onDataChange(snapshot: DataSnapshot) {
+                                    for (h in snapshot.children){
+                                        val value = h.getValue(Item::class.java)
+
+                                        oldItem.add(value!!)
+                                    }
+                                }
+
+                                override fun onCancelled(error: DatabaseError) {  }
+
+                            })
+
                         FirebaseDatabase.getInstance().getReference("pesanan")
                             .child(intent.getStringExtra("id_pesanan").toString())
                             .child("status")
                             .setValue("Selesai")
-                            .addOnSuccessListener {
+                            .addOnCompleteListener {
                                 FirebaseDatabase.getInstance().getReference("pesanan")
                                     .child(intent.getStringExtra("id_pesanan").toString())
                                     .child("idNstatus")
                                     .setValue(id_user+ "|Selesai")
-                                    .addOnSuccessListener {
-                                        Toast.makeText(this@ActivityDetail, "Pesanan selesai", Toast.LENGTH_SHORT).show()
-                                        val intent = Intent(this@ActivityDetail, ActivityUtamaAdmin::class.java)
-                                        intent.putExtra("pesanan", "true")
-                                        startActivity(intent)
+
+                                pesananItem.forEach { itm ->
+                                    oldItem.forEach { old ->
+                                        if(old.id_item.equals(itm.id_detail)) {
+                                            val stok = (old.stok.toInt() + itm.jumlah.toInt()).toString()
+                                            FirebaseDatabase.getInstance().getReference("item")
+                                                .child(old.id_sanggar)
+                                                .child(old.id_item)
+                                                .child("stok")
+                                                .setValue(stok)
+                                        }
                                     }
+                                }
+
+                                Toast.makeText(this@ActivityDetail, "Berhasil",Toast.LENGTH_LONG).show()
+                                val intent = Intent(this@ActivityDetail, ActivityUtamaAdmin::class.java)
+                                intent.putExtra("pesanan", "true")
+                                startActivity(intent)
+                                finish()
                             }
                     }
                 })
