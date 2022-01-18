@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -49,14 +50,17 @@ class FragmentBeranda : Fragment() {
             query
         ) {
             override fun populateViewHolder(viewHolder:ViewholderBeranda, model:Sanggar, position:Int) {
-                viewHolder.setDetails(model.id_sanggar, model.nama_sanggar, model.alamat_sanggar, model.nohp_sanggar)
+                viewHolder.setDetails(model)
             }
             override fun onCreateViewHolder(parent:ViewGroup, viewType:Int):ViewholderBeranda {
                 val viewHolder = super.onCreateViewHolder(parent, viewType)
                 viewHolder.setOnClickListener(object: ViewholderBeranda.ClickListener {
                     override fun onItemClick(view:View, position:Int) {
                         val intent = Intent(view.context, ActivityItem::class.java)
-                        intent.putExtra("id_sanggar", viewHolder.id_sanggar)
+                        intent.putExtra("id_sanggar", viewHolder.sanggar.id_sanggar)
+                        val ppn = fuzzyCmeans(viewHolder.sanggar.total_sewa.toInt())
+                        Log.d("ppn", ppn.toString())
+                        intent.putExtra("ppn", ppn)
                         startActivity(intent)
                     }
                     override fun onItemLongClick(view:View, position:Int) {}
@@ -65,5 +69,16 @@ class FragmentBeranda : Fragment() {
             }
         }
         mRecyclerView.adapter = firebaseRecyclerAdapter
+    }
+
+    fun fuzzyCmeans(jumlah: Int): Int {
+        if(jumlah == 0)
+            return 0
+        else if(jumlah > 0 && jumlah < 5)
+            return 150000
+        else if(jumlah == 5)
+            return 300000
+        else
+            return 500000
     }
 }

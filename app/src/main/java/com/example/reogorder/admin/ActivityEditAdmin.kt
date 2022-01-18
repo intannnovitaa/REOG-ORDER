@@ -14,6 +14,7 @@ class ActivityEditAdmin : AppCompatActivity() {
     lateinit var namaSanggar: EditText
     lateinit var alamatSanggar: EditText
     lateinit var telpSanggar: EditText
+    lateinit var rentSanggar: TextView
 
     lateinit var namaBarong: TextView
     lateinit var hargaBarong: EditText
@@ -54,6 +55,7 @@ class ActivityEditAdmin : AppCompatActivity() {
     lateinit var databaseSanggar: DatabaseReference
     lateinit var databaseItem: DatabaseReference
     var idSanggar = ""
+    var totalSewa = 0
     var idItem = arrayListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +65,7 @@ class ActivityEditAdmin : AppCompatActivity() {
         namaSanggar = findViewById(R.id.namaSanggar)
         alamatSanggar = findViewById(R.id.alamatSanggar)
         telpSanggar = findViewById(R.id.telpSanggar)
+        rentSanggar = findViewById(R.id.rentSanggar)
         btnSimpan = findViewById(R.id.btnSimpan)
         btnHapus = findViewById(R.id.btnHapus)
 
@@ -100,6 +103,7 @@ class ActivityEditAdmin : AppCompatActivity() {
         hargaAngklung = findViewById(R.id.hargaAngklung)
         stokAngklung = findViewById(R.id.stokAngklung)
 
+        rentSanggar.text = "0"
         readSanggar()
 
         btnSimpan.setOnClickListener {
@@ -124,7 +128,7 @@ class ActivityEditAdmin : AppCompatActivity() {
         }
 
         if(!TextUtils.isEmpty(nama_sanggar) && !TextUtils.isEmpty(alamat_sanggar) && !TextUtils.isEmpty(nohp_sanggar)) {
-            val add = Sanggar(idSanggar, nama_sanggar, alamat_sanggar, nohp_sanggar)
+            val add = Sanggar(idSanggar, nama_sanggar, alamat_sanggar, nohp_sanggar, totalSewa.toString())
             databaseSanggar.child(idSanggar).setValue(add).addOnCompleteListener {
                 addItem()
             }
@@ -222,8 +226,10 @@ class ActivityEditAdmin : AppCompatActivity() {
                     namaSanggar.text = Editable.Factory.getInstance().newEditable(allocation!!.nama_sanggar)
                     alamatSanggar.text = Editable.Factory.getInstance().newEditable(allocation.alamat_sanggar)
                     telpSanggar.text = Editable.Factory.getInstance().newEditable(allocation.nohp_sanggar)
+                    rentSanggar.text = allocation.total_sewa
 
                     idSanggar = allocation.id_sanggar
+                    totalSewa = allocation.total_sewa.toInt()
                 }
             }
             override fun onCancelled(databaseError: DatabaseError) {}

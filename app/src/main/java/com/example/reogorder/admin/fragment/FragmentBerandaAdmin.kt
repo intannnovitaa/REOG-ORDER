@@ -63,14 +63,14 @@ class FragmentBerandaAdmin : Fragment() {
             query
         ) {
             override fun populateViewHolder(viewHolder: ViewholderBeranda, model: Sanggar, position:Int) {
-                viewHolder.setDetails(model.id_sanggar, model.nama_sanggar, model.alamat_sanggar, model.nohp_sanggar)
+                viewHolder.setDetails(model)
             }
             override fun onCreateViewHolder(parent:ViewGroup, viewType:Int): ViewholderBeranda {
                 val viewHolder = super.onCreateViewHolder(parent, viewType)
                 viewHolder.setOnClickListener(object: ViewholderBeranda.ClickListener {
                     override fun onItemClick(view:View, position:Int) {
                         val intent = Intent(view.context, ActivityEditAdmin::class.java)
-                        intent.putExtra("id_sanggar", viewHolder.id_sanggar)
+                        intent.putExtra("id_sanggar", viewHolder.sanggar.id_sanggar)
                         startActivity(intent)
                     }
                     override fun onItemLongClick(view:View, position:Int) {}

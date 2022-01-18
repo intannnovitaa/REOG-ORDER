@@ -125,6 +125,30 @@
                         android:textSize="15dp" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        app:srcCompat="@drawable/ic_rent" />
+
+                    <TextView
+                        android:id="@+id/rentSanggar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:background="@android:color/white"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="3dp"

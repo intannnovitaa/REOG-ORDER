@@ -50,49 +50,59 @@
             android:textSize="16dp"
             android:textColor="@android:color/black"
             android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/rent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text=""
+            android:textSize="16dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"/>
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/layoutRekom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/titleItem">
-        <Button
-            android:id="@+id/btnSaran1"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="SARAN 1"
-            android:textColor="@android:color/white"
-            android:textSize="15dp"/>
+<!--    <LinearLayout-->
+<!--        android:id="@+id/layoutRekom"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_below="@+id/titleItem">-->
+<!--        <Button-->
+<!--            android:id="@+id/btnSaran1"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            android:text="SARAN 1"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textSize="15dp"/>-->
 
-        <Button
-            android:id="@+id/btnSaran2"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="SARAN 2"
-            android:textColor="@android:color/white"
-            android:textSize="15dp"/>
+<!--        <Button-->
+<!--            android:id="@+id/btnSaran2"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorPrimary"-->
+<!--            android:text="SARAN 2"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textSize="15dp"/>-->
 
-        <Button
-            android:id="@+id/btnSemua"
-            android:layout_width="0dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:text="SEMUA"
-            android:textColor="@android:color/white"
-            android:textSize="15dp"/>
-    </LinearLayout>
+<!--        <Button-->
+<!--            android:id="@+id/btnSemua"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="35dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@color/colorAccent"-->
+<!--            android:text="SEMUA"-->
+<!--            android:textColor="@android:color/white"-->
+<!--            android:textSize="15dp"/>-->
+<!--    </LinearLayout>-->
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/layoutRekom"
+        android:layout_below="@+id/titleItem"
         android:scrollbars="none">
 
         <LinearLayout

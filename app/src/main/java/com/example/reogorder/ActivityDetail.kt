@@ -31,6 +31,9 @@ class ActivityDetail : AppCompatActivity() {
     lateinit var tanggalDetail: TextView
     lateinit var lokasiDetail: TextView
     lateinit var totalBiayaDetail: TextView
+    lateinit var totalBiayaBarangDetail: TextView
+    lateinit var totalBiayaPpnDetail: TextView
+    lateinit var totalBiayaJarakDetail: TextView
     lateinit var btnSelesai: Button
 
     lateinit var jumlahBarongDetail: TextView
@@ -81,6 +84,7 @@ class ActivityDetail : AppCompatActivity() {
 
     var id_user = ""
     var id_sanggar = ""
+    var total_sewa = ""
     var pesananItem = arrayListOf<Detail>()
     var formatNumber: NumberFormat = DecimalFormat("#,###")
     lateinit var SP: SharedPreferences
@@ -97,6 +101,9 @@ class ActivityDetail : AppCompatActivity() {
         tanggalDetail = findViewById(R.id.tanggalDetail)
         lokasiDetail = findViewById(R.id.lokasiDetail)
         totalBiayaDetail = findViewById(R.id.totalBiayaDetail)
+        totalBiayaBarangDetail = findViewById(R.id.totalBiayaBarangDetail)
+        totalBiayaJarakDetail = findViewById(R.id.totalBiayaJarakDetail)
+        totalBiayaPpnDetail = findViewById(R.id.totalBiayaPpnDetail)
         btnSelesai = findViewById(R.id.btnSelesai)
 
         jumlahBarongDetail = findViewById(R.id.jumlahBarongDetail)
@@ -162,6 +169,9 @@ class ActivityDetail : AppCompatActivity() {
                     tanggalDetail.text = allocation.tanggal
                     lokasiDetail.text = allocation.lokasi
                     totalBiayaDetail.text = "Rp. " + formatNumber.format(allocation.total_bayar.toInt()) + ",00"
+                    totalBiayaJarakDetail.text = "Rp. " + formatNumber.format(allocation.jarak.toInt()) + ",00"
+                    totalBiayaBarangDetail.text = "Rp. " + formatNumber.format(allocation.barang.toInt()) + ",00"
+                    totalBiayaPpnDetail.text = "Rp. " + formatNumber.format(allocation.ppn.toInt()) + ",00"
                     pesananItem = allocation.item
 
                     FirebaseDatabase.getInstance().getReference("user").orderByKey().equalTo(id_user).get().addOnSuccessListener {
@@ -176,6 +186,7 @@ class ActivityDetail : AppCompatActivity() {
                             val vl = j.getValue(Sanggar::class.java)
                             namaSanggarDetail.text = vl!!.nama_sanggar
                             alamatSanggarDetail.text = vl.alamat_sanggar
+                            total_sewa = vl.total_sewa
                         }
                     }
                     FirebaseDatabase.getInstance().getReference("item").child(allocation.id_sanggar)
@@ -299,6 +310,11 @@ class ActivityDetail : AppCompatActivity() {
                                     .child(intent.getStringExtra("id_pesanan").toString())
                                     .child("idNstatus")
                                     .setValue(id_user+ "|Selesai")
+
+                                FirebaseDatabase.getInstance().getReference("sanggar")
+                                    .child(id_sanggar)
+                                    .child("total_sewa")
+                                    .setValue((total_sewa.toInt() + 1).toString())
 
                                 pesananItem.forEach { itm ->
                                     oldItem.forEach { old ->

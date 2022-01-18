@@ -4,11 +4,12 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.reogorder.R
+import com.example.reogorder.model.Sanggar
 
 class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
     internal var mView:View = itemView
     private var mClickListener: ClickListener? = null
-    var id_sanggar = ""
+    var sanggar = Sanggar()
 
     init{
         itemView.setOnClickListener { view -> mClickListener!!.onItemClick(view, adapterPosition) }
@@ -18,15 +19,15 @@ class ViewholderBeranda(itemView:View): RecyclerView.ViewHolder(itemView) {
         }
     }
 
-    fun setDetails(id: String, nama_sanggar: String, alamat_sanggar: String, nohp_sanggar: String) {
-        this.id_sanggar = id
+    fun setDetails(sanggar: Sanggar) {
+        this.sanggar = sanggar
         val namaSanggar = mView.findViewById(R.id.namaSanggar) as TextView
         val alamatSanggar = mView.findViewById(R.id.alamatSanggar) as TextView
         val nohpSanggar = mView.findViewById(R.id.nohpSanggar) as TextView
 
-        namaSanggar.text = nama_sanggar
-        alamatSanggar.text = alamat_sanggar
-        nohpSanggar.text = nohp_sanggar
+        namaSanggar.text = sanggar.nama_sanggar
+        alamatSanggar.text = sanggar.alamat_sanggar
+        nohpSanggar.text = sanggar.nohp_sanggar
     }
 
     interface ClickListener {

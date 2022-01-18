@@ -28,6 +28,7 @@ class ActivityItem : AppCompatActivity() {
     lateinit var sanggarItem: TextView
     lateinit var alamatItem: TextView
     lateinit var nohpItem: TextView
+    lateinit var totalSewa: TextView
     lateinit var btnCheckout: Button
 
     lateinit var namaBarongItem: TextView
@@ -153,9 +154,9 @@ class ActivityItem : AppCompatActivity() {
     var hargaGong = ""
     var hargaAngklung = ""
 
-    lateinit var btnSaran1: Button
-    lateinit var btnSaran2: Button
-    lateinit var btnSemua: Button
+//    lateinit var btnSaran1: Button
+//    lateinit var btnSaran2: Button
+//    lateinit var btnSemua: Button
     var clusterBarong = ""
     var clusterJathil = ""
     var clusterKlonosewandono = ""
@@ -176,6 +177,7 @@ class ActivityItem : AppCompatActivity() {
         sanggarItem = findViewById(R.id.sanggarItem)
         alamatItem = findViewById(R.id.alamatItem)
         nohpItem = findViewById(R.id.nohpItem)
+        totalSewa = findViewById(R.id.rent)
         btnCheckout = findViewById(R.id.btnCheckout)
 
         namaBarongItem = findViewById(R.id.namaBarongItem)
@@ -257,9 +259,9 @@ class ActivityItem : AppCompatActivity() {
         cardGong = findViewById(R.id.cardGong)
         cardAngklung = findViewById(R.id.cardAngklung)
 
-        btnSaran1 = findViewById(R.id.btnSaran1)
-        btnSaran2 = findViewById(R.id.btnSaran2)
-        btnSemua = findViewById(R.id.btnSemua)
+//        btnSaran1 = findViewById(R.id.btnSaran1)
+//        btnSaran2 = findViewById(R.id.btnSaran2)
+//        btnSemua = findViewById(R.id.btnSemua)
 
         databaseSanggar = FirebaseDatabase.getInstance().getReference("sanggar")
         val query = databaseSanggar.orderByKey().equalTo(intent.getStringExtra("id_sanggar").toString())
@@ -270,6 +272,7 @@ class ActivityItem : AppCompatActivity() {
                     sanggarItem.text = allocation!!.nama_sanggar
                     alamatItem.text = allocation.alamat_sanggar
                     nohpItem.text = allocation.nohp_sanggar
+                    totalSewa.text = allocation.total_sewa + " kali disewa"
 
                     idSanggar = allocation.id_sanggar
                 }
@@ -277,170 +280,170 @@ class ActivityItem : AppCompatActivity() {
             override fun onCancelled(databaseError: DatabaseError) {}
         })
 
-        btnSemua.setOnClickListener {
-            btnSemua.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
-            btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            cardBarong.visibility = View.VISIBLE
-            cardJathil.visibility = View.VISIBLE
-            cardKlonosewandono.visibility = View.VISIBLE
-            cardBujang.visibility = View.VISIBLE
-            cardWarog.visibility = View.VISIBLE
-            cardGendang.visibility = View.VISIBLE
-            cardKetipung.visibility = View.VISIBLE
-            cardSlompret.visibility = View.VISIBLE
-            cardKenong.visibility = View.VISIBLE
-            cardGong.visibility = View.VISIBLE
-            cardAngklung.visibility = View.VISIBLE
-        }
-        btnSaran1.setOnClickListener {
-            btnSemua.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
-            btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            if(clusterBarong == "C1") {
-                cardBarong.visibility = View.VISIBLE
-            }
-            if(clusterBarong == "C2") {
-                cardBarong.visibility = View.GONE
-            }
-            if(clusterJathil == "C1") {
-                cardJathil.visibility = View.VISIBLE
-            }
-            if(clusterJathil == "C2") {
-                cardJathil.visibility = View.GONE
-            }
-            if(clusterKlonosewandono == "C1") {
-                cardKlonosewandono.visibility = View.VISIBLE
-            }
-            if(clusterKlonosewandono == "C2") {
-                cardKlonosewandono.visibility = View.GONE
-            }
-            if(clusterBujang == "C1") {
-                cardBujang.visibility = View.VISIBLE
-            }
-            if(clusterBujang == "C2") {
-                cardBujang.visibility = View.GONE
-            }
-            if(clusterWarog == "C1") {
-                cardWarog.visibility = View.VISIBLE
-            }
-            if(clusterWarog == "C2") {
-                cardWarog.visibility = View.GONE
-            }
-            if(clusterGendang == "C1") {
-                cardGendang.visibility = View.VISIBLE
-            }
-            if(clusterGendang == "C2") {
-                cardGendang.visibility = View.GONE
-            }
-            if(clusterKetipung == "C1") {
-                cardKetipung.visibility = View.VISIBLE
-            }
-            if(clusterKetipung == "C2") {
-                cardKetipung.visibility = View.GONE
-            }
-            if(clusterSlompret == "C1") {
-                cardSlompret.visibility = View.VISIBLE
-            }
-            if(clusterSlompret == "C2") {
-                cardSlompret.visibility = View.GONE
-            }
-            if(clusterKenong == "C1") {
-                cardKenong.visibility = View.VISIBLE
-            }
-            if(clusterKenong == "C2") {
-                cardKenong.visibility = View.GONE
-            }
-            if(clusterGong == "C1") {
-                cardGong.visibility = View.VISIBLE
-            }
-            if(clusterGong == "C2") {
-                cardGong.visibility = View.GONE
-            }
-            if(clusterAngklung == "C1") {
-                cardAngklung.visibility = View.VISIBLE
-            }
-            if(clusterAngklung == "C2") {
-                cardAngklung.visibility = View.GONE
-            }
-        }
-        btnSaran2.setOnClickListener {
-            btnSemua.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
-            btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
-            if(clusterBarong == "C2") {
-                cardBarong.visibility = View.VISIBLE
-            }
-            if(clusterBarong == "C1") {
-                cardBarong.visibility = View.GONE
-            }
-            if(clusterJathil == "C2") {
-                cardJathil.visibility = View.VISIBLE
-            }
-            if(clusterJathil == "C1") {
-                cardJathil.visibility = View.GONE
-            }
-            if(clusterKlonosewandono == "C2") {
-                cardKlonosewandono.visibility = View.VISIBLE
-            }
-            if(clusterKlonosewandono == "C1") {
-                cardKlonosewandono.visibility = View.GONE
-            }
-            if(clusterBujang == "C2") {
-                cardBujang.visibility = View.VISIBLE
-            }
-            if(clusterBujang == "C1") {
-                cardBujang.visibility = View.GONE
-            }
-            if(clusterWarog == "C2") {
-                cardWarog.visibility = View.VISIBLE
-            }
-            if(clusterWarog == "C1") {
-                cardWarog.visibility = View.GONE
-            }
-            if(clusterGendang == "C2") {
-                cardGendang.visibility = View.VISIBLE
-            }
-            if(clusterGendang == "C1") {
-                cardGendang.visibility = View.GONE
-            }
-            if(clusterKetipung == "C2") {
-                cardKetipung.visibility = View.VISIBLE
-            }
-            if(clusterKetipung == "C1") {
-                cardKetipung.visibility = View.GONE
-            }
-            if(clusterSlompret == "C2") {
-                cardSlompret.visibility = View.VISIBLE
-            }
-            if(clusterSlompret == "C1") {
-                cardSlompret.visibility = View.GONE
-            }
-            if(clusterKenong == "C2") {
-                cardKenong.visibility = View.VISIBLE
-            }
-            if(clusterKenong == "C1") {
-                cardKenong.visibility = View.GONE
-            }
-            if(clusterGong == "C2") {
-                cardGong.visibility = View.VISIBLE
-            }
-            if(clusterGong == "C1") {
-                cardGong.visibility = View.GONE
-            }
-            if(clusterAngklung == "C2") {
-                cardAngklung.visibility = View.VISIBLE
-            }
-            if(clusterAngklung == "C1") {
-                cardAngklung.visibility = View.GONE
-            }
-        }
+//        btnSemua.setOnClickListener {
+//            btnSemua.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+//            btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+//            btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+//            cardBarong.visibility = View.VISIBLE
+//            cardJathil.visibility = View.VISIBLE
+//            cardKlonosewandono.visibility = View.VISIBLE
+//            cardBujang.visibility = View.VISIBLE
+//            cardWarog.visibility = View.VISIBLE
+//            cardGendang.visibility = View.VISIBLE
+//            cardKetipung.visibility = View.VISIBLE
+//            cardSlompret.visibility = View.VISIBLE
+//            cardKenong.visibility = View.VISIBLE
+//            cardGong.visibility = View.VISIBLE
+//            cardAngklung.visibility = View.VISIBLE
+//        }
+//        btnSaran1.setOnClickListener {
+//            btnSemua.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+//            btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+//            btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+//            if(clusterBarong == "C1") {
+//                cardBarong.visibility = View.VISIBLE
+//            }
+//            if(clusterBarong == "C2") {
+//                cardBarong.visibility = View.GONE
+//            }
+//            if(clusterJathil == "C1") {
+//                cardJathil.visibility = View.VISIBLE
+//            }
+//            if(clusterJathil == "C2") {
+//                cardJathil.visibility = View.GONE
+//            }
+//            if(clusterKlonosewandono == "C1") {
+//                cardKlonosewandono.visibility = View.VISIBLE
+//            }
+//            if(clusterKlonosewandono == "C2") {
+//                cardKlonosewandono.visibility = View.GONE
+//            }
+//            if(clusterBujang == "C1") {
+//                cardBujang.visibility = View.VISIBLE
+//            }
+//            if(clusterBujang == "C2") {
+//                cardBujang.visibility = View.GONE
+//            }
+//            if(clusterWarog == "C1") {
+//                cardWarog.visibility = View.VISIBLE
+//            }
+//            if(clusterWarog == "C2") {
+//                cardWarog.visibility = View.GONE
+//            }
+//            if(clusterGendang == "C1") {
+//                cardGendang.visibility = View.VISIBLE
+//            }
+//            if(clusterGendang == "C2") {
+//                cardGendang.visibility = View.GONE
+//            }
+//            if(clusterKetipung == "C1") {
+//                cardKetipung.visibility = View.VISIBLE
+//            }
+//            if(clusterKetipung == "C2") {
+//                cardKetipung.visibility = View.GONE
+//            }
+//            if(clusterSlompret == "C1") {
+//                cardSlompret.visibility = View.VISIBLE
+//            }
+//            if(clusterSlompret == "C2") {
+//                cardSlompret.visibility = View.GONE
+//            }
+//            if(clusterKenong == "C1") {
+//                cardKenong.visibility = View.VISIBLE
+//            }
+//            if(clusterKenong == "C2") {
+//                cardKenong.visibility = View.GONE
+//            }
+//            if(clusterGong == "C1") {
+//                cardGong.visibility = View.VISIBLE
+//            }
+//            if(clusterGong == "C2") {
+//                cardGong.visibility = View.GONE
+//            }
+//            if(clusterAngklung == "C1") {
+//                cardAngklung.visibility = View.VISIBLE
+//            }
+//            if(clusterAngklung == "C2") {
+//                cardAngklung.visibility = View.GONE
+//            }
+//        }
+//        btnSaran2.setOnClickListener {
+//            btnSemua.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+//            btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+//            btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+//            if(clusterBarong == "C2") {
+//                cardBarong.visibility = View.VISIBLE
+//            }
+//            if(clusterBarong == "C1") {
+//                cardBarong.visibility = View.GONE
+//            }
+//            if(clusterJathil == "C2") {
+//                cardJathil.visibility = View.VISIBLE
+//            }
+//            if(clusterJathil == "C1") {
+//                cardJathil.visibility = View.GONE
+//            }
+//            if(clusterKlonosewandono == "C2") {
+//                cardKlonosewandono.visibility = View.VISIBLE
+//            }
+//            if(clusterKlonosewandono == "C1") {
+//                cardKlonosewandono.visibility = View.GONE
+//            }
+//            if(clusterBujang == "C2") {
+//                cardBujang.visibility = View.VISIBLE
+//            }
+//            if(clusterBujang == "C1") {
+//                cardBujang.visibility = View.GONE
+//            }
+//            if(clusterWarog == "C2") {
+//                cardWarog.visibility = View.VISIBLE
+//            }
+//            if(clusterWarog == "C1") {
+//                cardWarog.visibility = View.GONE
+//            }
+//            if(clusterGendang == "C2") {
+//                cardGendang.visibility = View.VISIBLE
+//            }
+//            if(clusterGendang == "C1") {
+//                cardGendang.visibility = View.GONE
+//            }
+//            if(clusterKetipung == "C2") {
+//                cardKetipung.visibility = View.VISIBLE
+//            }
+//            if(clusterKetipung == "C1") {
+//                cardKetipung.visibility = View.GONE
+//            }
+//            if(clusterSlompret == "C2") {
+//                cardSlompret.visibility = View.VISIBLE
+//            }
+//            if(clusterSlompret == "C1") {
+//                cardSlompret.visibility = View.GONE
+//            }
+//            if(clusterKenong == "C2") {
+//                cardKenong.visibility = View.VISIBLE
+//            }
+//            if(clusterKenong == "C1") {
+//                cardKenong.visibility = View.GONE
+//            }
+//            if(clusterGong == "C2") {
+//                cardGong.visibility = View.VISIBLE
+//            }
+//            if(clusterGong == "C1") {
+//                cardGong.visibility = View.GONE
+//            }
+//            if(clusterAngklung == "C2") {
+//                cardAngklung.visibility = View.VISIBLE
+//            }
+//            if(clusterAngklung == "C1") {
+//                cardAngklung.visibility = View.GONE
+//            }
+//        }
 
         loadItem()
         setJumlah()
         checkOldData()
-        fuzzyCMeans()
-
+        val ppn = intent.getIntExtra("ppn", 0)
+//        fuzzyCMeans()
         btnCheckout.setOnClickListener {
             val idBarongI = idBarong.trim()
             val idJathilI = idJathil.trim()
@@ -544,6 +547,8 @@ class ActivityItem : AppCompatActivity() {
             intent.putExtra("tglPesanan", tglPesanan)
             intent.putExtra("wktPesanan", wktPesanan)
             intent.putExtra("lokPesanan", lokPesanan)
+
+            intent.putExtra("ppn", ppn)
             startActivity(intent)
         }
     }
@@ -863,11 +868,11 @@ class ActivityItem : AppCompatActivity() {
                                                         }
                                                     }
                                                 }
-                                                btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
-                                                btnSaran1.isClickable = false
-                                                btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
-                                                btnSaran2.isClickable = false
-                                                btnSemua.isClickable = false
+//                                                btnSaran1.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
+//                                                btnSaran1.isClickable = false
+//                                                btnSaran2.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorGray))
+//                                                btnSaran2.isClickable = false
+//                                                btnSemua.isClickable = false
                                             }
                                             override fun onCancelled(p0: DatabaseError) { }
                                         })

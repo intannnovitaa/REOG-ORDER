@@ -35,6 +35,10 @@ class ActivityCheckout : AppCompatActivity() {
     lateinit var tanggalCo: TextView
     lateinit var lokasiCo: EditText
     lateinit var totalBiayaCo: TextView
+    lateinit var totalBiayaJarak: TextView
+    lateinit var totalBiayaPpn: TextView
+    lateinit var totalBiayaBarang: TextView
+    lateinit var radioJarak: RadioGroup
     lateinit var btnCheckout: Button
 
     lateinit var jumlahBarongCo: TextView
@@ -83,6 +87,10 @@ class ActivityCheckout : AppCompatActivity() {
     var hasilGong = 0
     var hasilAngklung = 0
 
+    var hargaJarak = 0
+    var hargaPpn   = 0
+    var hargaBarang= 0
+
     lateinit var layoutBarongCo: RelativeLayout
     lateinit var layoutJathilCo: RelativeLayout
     lateinit var layoutKlonosewandonoCo: RelativeLayout
@@ -100,7 +108,7 @@ class ActivityCheckout : AppCompatActivity() {
     val date = Calendar.getInstance()
     var formateTime = SimpleDateFormat("hh:mm aa")
     var formatNumber: NumberFormat = DecimalFormat("#,###")
-    var totalBayar = ""
+    var totalBayar = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -115,6 +123,10 @@ class ActivityCheckout : AppCompatActivity() {
         lokasiCo = findViewById(R.id.lokasiCo)
         totalBiayaCo = findViewById(R.id.totalBiayaCo)
         btnCheckout = findViewById(R.id.btnCheckout)
+        totalBiayaBarang = findViewById(R.id.totalBiayaBarang)
+        totalBiayaJarak = findViewById(R.id.totalBiayaJarak)
+        totalBiayaPpn = findViewById(R.id.totalBiayaPpn)
+        radioJarak = findViewById(R.id.radioJarak)
 
         jumlahBarongCo = findViewById(R.id.jumlahBarongCo)
         namaBarongCo = findViewById(R.id.namaBarongCo)
@@ -162,6 +174,9 @@ class ActivityCheckout : AppCompatActivity() {
         layoutGongCo = findViewById(R.id.layoutGongCo)
         layoutAngklungCo = findViewById(R.id.layoutAngklungCo)
 
+        hargaPpn = intent.getIntExtra("ppn", 0)
+        totalBiayaPpn.text = "Rp. " + formatNumber.format(hargaPpn) + ",00"
+        totalBiayaJarak.text = "Rp. " + formatNumber.format(hargaJarak.toInt()) + ",00"
         loadData()
 
         waktuCo.setOnClickListener {
@@ -174,6 +189,7 @@ class ActivityCheckout : AppCompatActivity() {
             }, date.get(Calendar.HOUR_OF_DAY), date.get(Calendar.MINUTE), false)
             time.show()
         }
+        Log.d("cekradio", "btn"+radioJarak.checkedRadioButtonId.toString())
 
         tanggalCo.setOnClickListener {
             val date = DatePickerDialog(this, {
@@ -200,6 +216,21 @@ class ActivityCheckout : AppCompatActivity() {
                 btnCheckout.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
                 Toast.makeText(this, "Lengkapi Data",Toast.LENGTH_LONG).show()
             }
+        }
+
+        radioJarak.setOnCheckedChangeListener { group, checkedId ->
+            val rad = findViewById<RadioButton>(checkedId)
+            if(rad.text.toString().equals("0 sampai 5 km"))
+                hargaJarak = 200000
+            else if(rad.text.toString().equals("5 sampai 10 km"))
+                hargaJarak = 500000
+            else
+                hargaJarak = 1000000
+
+            totalBiayaJarak.text = "Rp. " + formatNumber.format(hargaJarak.toInt()) + ",00"
+            totalBayar = hargaJarak + hargaPpn + hargaBarang
+
+            totalBiayaCo.text = "Rp. " + formatNumber.format(totalBayar.toInt()) + ",00"
         }
     }
 
@@ -295,9 +326,12 @@ class ActivityCheckout : AppCompatActivity() {
         hasilGong = intent.getStringExtra("hargaGong")!!.toInt() * intent.getStringExtra("jumlahGong")!!.toInt()
         hasilAngklung = intent.getStringExtra("hargaAngklung")!!.toInt() * intent.getStringExtra("jumlahAngklung")!!.toInt()
 
-        totalBayar = (hasilBarong + hasilJathil + hasilKlonosewandono + hasilBujang + hasilWarog + hasilGendang +
-                hasilKetipung + hasilSlompret + hasilKenong + hasilGong + hasilAngklung).toString()
-        totalBiayaCo.text = "Rp. " + formatNumber.format(totalBayar.toInt()) + ",00"
+        hargaBarang = hasilBarong + hasilJathil + hasilKlonosewandono + hasilBujang + hasilWarog + hasilGendang +
+                hasilKetipung + hasilSlompret + hasilKenong + hasilGong + hasilAngklung
+        totalBayar = hargaBarang + hargaPpn
+
+        totalBiayaBarang.text = "Rp. " + formatNumber.format(hargaBarang) + ",00"
+        totalBiayaCo.text = "Rp. " + formatNumber.format(totalBayar) + ",00"
     }
 
     private fun addPesanan(): Boolean {
@@ -311,7 +345,7 @@ class ActivityCheckout : AppCompatActivity() {
         val waktu = waktuCo.text.toString().trim()
         val tanggal = tanggalCo.text.toString().trim()
         val lokasi = lokasiCo.text.toString().trim()
-        val total = totalBayar.trim()
+        val total = totalBayar.toString()
         val status = "Diproses"
 
         val idSanggar = intent.getStringExtra("idSanggar").toString()
@@ -366,8 +400,22 @@ class ActivityCheckout : AppCompatActivity() {
         if(intent.getStringExtra("idPesanan").toString() != "")
             idPesanan = intent.getStringExtra("idPesanan").toString()
 
-        if(!TextUtils.isEmpty(waktu) && !TextUtils.isEmpty(tanggal) && !TextUtils.isEmpty(lokasi)) {
-            val addPesanan = Pesanan(idPesanan, idSanggar, item, id, waktu, tanggal, lokasi, total, status, (id+'|'+status))
+        if(!TextUtils.isEmpty(waktu) && !TextUtils.isEmpty(tanggal) && !TextUtils.isEmpty(lokasi) && radioJarak.checkedRadioButtonId != -1) {
+            val addPesanan = Pesanan(
+                idPesanan,
+                idSanggar,
+                item,
+                id,
+                waktu,
+                tanggal,
+                lokasi,
+                total,
+                status,
+                (id+'|'+status),
+                hargaBarang.toString(),
+                hargaJarak.toString(),
+                hargaPpn.toString()
+            )
 
             val oldItem = arrayListOf<Item>()
             FirebaseDatabase.getInstance().getReference("item").child(idSanggar)
