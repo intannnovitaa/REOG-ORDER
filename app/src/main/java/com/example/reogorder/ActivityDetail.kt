@@ -316,6 +316,11 @@ class ActivityDetail : AppCompatActivity() {
                                     .child("total_sewa")
                                     .setValue((total_sewa.toInt() + 1).toString())
 
+                                FirebaseDatabase.getInstance().getReference("sanggar")
+                                    .child(id_sanggar)
+                                    .child("cluster")
+                                    .setValue(setCluster(total_sewa.toInt() + 1))
+
                                 pesananItem.forEach { itm ->
                                     oldItem.forEach { old ->
                                         if(old.id_item.equals(itm.id_detail)) {
@@ -343,5 +348,14 @@ class ActivityDetail : AppCompatActivity() {
                     }
                 }).create().show()
         }
+    }
+
+    fun setCluster(jumlah: Int): String {
+        if(jumlah > 0 && jumlah < 5)
+            return "low"
+        else if(jumlah == 5)
+            return "medium"
+        else
+            return "high"
     }
 }

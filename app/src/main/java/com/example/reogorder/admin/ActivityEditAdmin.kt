@@ -56,6 +56,7 @@ class ActivityEditAdmin : AppCompatActivity() {
     lateinit var databaseItem: DatabaseReference
     var idSanggar = ""
     var totalSewa = 0
+    var cluster = "low"
     var idItem = arrayListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -128,7 +129,7 @@ class ActivityEditAdmin : AppCompatActivity() {
         }
 
         if(!TextUtils.isEmpty(nama_sanggar) && !TextUtils.isEmpty(alamat_sanggar) && !TextUtils.isEmpty(nohp_sanggar)) {
-            val add = Sanggar(idSanggar, nama_sanggar, alamat_sanggar, nohp_sanggar, totalSewa.toString())
+            val add = Sanggar(idSanggar, nama_sanggar, alamat_sanggar, nohp_sanggar, totalSewa.toString(), cluster)
             databaseSanggar.child(idSanggar).setValue(add).addOnCompleteListener {
                 addItem()
             }
@@ -230,6 +231,7 @@ class ActivityEditAdmin : AppCompatActivity() {
 
                     idSanggar = allocation.id_sanggar
                     totalSewa = allocation.total_sewa.toInt()
+                    cluster = allocation.cluster
                 }
             }
             override fun onCancelled(databaseError: DatabaseError) {}

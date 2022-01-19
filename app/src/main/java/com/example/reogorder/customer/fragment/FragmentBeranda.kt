@@ -3,9 +3,11 @@ package com.example.reogorder.customer.fragment
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -22,6 +24,10 @@ class FragmentBeranda : Fragment() {
     lateinit var mRecyclerView: RecyclerView
     lateinit var SP: SharedPreferences
 
+    lateinit var btnHigh: Button
+    lateinit var btnMedium: Button
+    lateinit var btnLow: Button
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_beranda, container, false)
     }
@@ -33,6 +39,10 @@ class FragmentBeranda : Fragment() {
         mRecyclerView = requireView().findViewById(R.id.recyclerBeranda)
         mRecyclerView.setHasFixedSize(true)
         mRecyclerView.layoutManager = mLayoutManager
+
+        btnHigh = requireView().findViewById(R.id.btnHigh)
+        btnMedium = requireView().findViewById(R.id.btnMedium)
+        btnLow = requireView().findViewById(R.id.btnLow)
     }
 
     override fun onStart() {
@@ -42,7 +52,36 @@ class FragmentBeranda : Fragment() {
         val txtName = activity?.findViewById<TextView>(R.id.txtName)
         txtName!!.text = SP.getString("nama", "")
 
-        val query = FirebaseDatabase.getInstance().getReference("sanggar")
+        val query = FirebaseDatabase.getInstance().getReference("sanggar").orderByChild("cluster").equalTo("high")
+        recycleView(query)
+        btnHigh.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+        btnMedium.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+        btnLow.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+
+        btnHigh.setOnClickListener {
+            val query = FirebaseDatabase.getInstance().getReference("sanggar").orderByChild("cluster").equalTo("high")
+            recycleView(query)
+            btnHigh.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+            btnMedium.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            btnLow.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+        }
+        btnMedium.setOnClickListener {
+            val query = FirebaseDatabase.getInstance().getReference("sanggar").orderByChild("cluster").equalTo("medium")
+            recycleView(query)
+            btnHigh.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            btnMedium.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+            btnLow.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+        }
+        btnLow.setOnClickListener {
+            val query = FirebaseDatabase.getInstance().getReference("sanggar").orderByChild("cluster").equalTo("low")
+            recycleView(query)
+            btnHigh.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            btnMedium.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorPrimary))
+            btnLow.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
+        }
+    }
+
+    fun recycleView(query: Query){
         val firebaseRecyclerAdapter = object: FirebaseRecyclerAdapter<Sanggar, ViewholderBeranda>(
             Sanggar::class.java,
             R.layout.card_beranda,
